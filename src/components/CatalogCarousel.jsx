@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import './CatalogCarousel.css';
 
 function ArrowButton({ direction, disabled, onClick }) {
@@ -47,46 +47,12 @@ function CarouselItem({ item, onSelect }) {
 }
 
 export default function CatalogCarousel({ items, onSelect }) {
-  const viewportRef = useRef(null);
   const touchStartXRef = useRef(0);
-  const [visibleCount, setVisibleCount] = useState(3);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const updateVisibleCount = () => {
-      if (window.innerWidth <= 800) {
-        setVisibleCount(1);
-        return;
-      }
-
-      if (window.innerWidth <= 1200) {
-        setVisibleCount(2);
-        return;
-      }
-
-      setVisibleCount(3);
-    };
-
-    updateVisibleCount();
-    window.addEventListener('resize', updateVisibleCount);
-
-    return () => window.removeEventListener('resize', updateVisibleCount);
-  }, []);
-
+  const visibleCount = 1;
   const maxIndex = Math.max(items.length - visibleCount, 0);
-
-  useEffect(() => {
-    setCurrentIndex((value) => Math.min(value, maxIndex));
-  }, [maxIndex]);
-
-  const dotCount = useMemo(() => Math.max(items.length - visibleCount + 1, 1), [items.length, visibleCount]);
-  const highlightedIndex = useMemo(() => {
-    if (visibleCount >= 3) {
-      return Math.min(currentIndex + 1, items.length - 1);
-    }
-
-    return currentIndex;
-  }, [currentIndex, items.length, visibleCount]);
+  const dotCount = items.length;
+  const highlightedIndex = currentIndex;
 
   const goToIndex = (index) => {
     const nextIndex = Math.max(0, Math.min(index, maxIndex));
@@ -126,7 +92,6 @@ export default function CatalogCarousel({ items, onSelect }) {
       <div className="catalog-carousel__viewport-wrap">
         <ArrowButton direction="left" disabled={!canGoPrevious} onClick={() => goToIndex(currentIndex - 1)} />
         <div
-          ref={viewportRef}
           className="catalog-carousel__viewport"
           role="region"
           aria-label="Carrossel de categorias do catalogo"
