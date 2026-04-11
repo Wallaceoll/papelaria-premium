@@ -679,6 +679,16 @@
 
 .section-dark--soft {
   background: linear-gradient(180deg, #211d1a, #171411);
+  color-scheme: dark;
+}
+
+.section-dark--soft .section-header--light .eyebrow {
+  color: rgba(201, 168, 76, 0.88);
+}
+
+.section-dark--soft .section-header--light .display-2 {
+  color: var(--warm-white);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .process-grid--editorial {
