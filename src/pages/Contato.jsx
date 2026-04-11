@@ -6,6 +6,8 @@ const PRODUCT_TYPES = [
   'Convite de Casamento',
   'Papelaria de Bebê',
   'Kit Corporativo',
+  'Papelaria Escolar',
+  'Papelaria de Escritório',
   'Convite de Aniversário',
   'Kit de Formatura',
   'Packaging / Embalagem',
@@ -62,8 +64,11 @@ export default function Contato() {
 
             {/* Sidebar info */}
             <div className="contato-info reveal-left">
-              <div className="info-block">
+              <div className="info-block info-block--contact">
                 <span className="eyebrow">Fale conosco</span>
+                <p className="info-copy">
+                  Escolha o canal que fizer mais sentido para você. Se preferir, fale direto no WhatsApp e aceleramos a conversa.
+                </p>
                 <div className="info-items">
                   {[
                     { icon: '✉', label: 'E-mail', value: 'ola@foliapapelaria.com.br', href: 'mailto:ola@foliapapelaria.com.br' },
@@ -85,8 +90,11 @@ export default function Contato() {
                 </div>
               </div>
 
-              <div className="info-block">
+              <div className="info-block info-block--timeline">
                 <span className="eyebrow">Nosso processo</span>
+                <p className="info-copy">
+                  Depois do primeiro contato, organizamos o atendimento para você entender prazo, proposta e próximos passos sem ruído.
+                </p>
                 <div className="info-timeline">
                   {[
                     { day: 'Dia 1', text: 'Recebemos seu orçamento e respondemos' },
@@ -99,17 +107,6 @@ export default function Contato() {
                         <p className="timeline-day eyebrow">{t.day}</p>
                         <p className="timeline-text">{t.text}</p>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="info-block info-trust">
-                <div className="trust-items">
-                  {['1.200+ projetos entregues', '98% de satisfação', '7 anos de experiência', 'Atendimento personalizado'].map(t => (
-                    <div className="trust-item" key={t}>
-                      <span className="trust-check">✓</span>
-                      <span>{t}</span>
                     </div>
                   ))}
                 </div>

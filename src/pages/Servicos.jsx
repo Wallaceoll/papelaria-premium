@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 import './Servicos.css';
 
@@ -7,154 +7,164 @@ const categories = [
   { id: 'todos', label: 'Todos' },
   { id: 'celebracao', label: 'Celebração' },
   { id: 'corporativo', label: 'Corporativo' },
-  { id: 'papelaria', label: 'Linha papelaria' },
+  { id: 'papelaria', label: 'Papelaria' },
   { id: 'packaging', label: 'Packaging' },
+];
+
+const highlightFamilies = [
+  {
+    id: 'celebracao',
+    title: 'Celebrar com presença visual',
+    text: 'Convites, menus, cartões e kits que começam o encanto antes mesmo do evento acontecer.',
+    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    id: 'papelaria',
+    title: 'Papelaria para escola, mesa e rotina',
+    text: 'Produtos que funcionam bem na vitrine e continuam desejáveis no uso do dia a dia.',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    id: 'corporativo',
+    title: 'Marcas que querem tocar melhor',
+    text: 'Materiais institucionais, onboarding e impressos que elevam a percepção da empresa.',
+    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80',
+  },
 ];
 
 const products = [
   {
     id: 1,
     cat: 'celebracao',
+    badge: 'Celebração',
     title: 'Suite de casamento editorial',
-    desc: 'Convite principal, RSVP, menu e envelope em composição de alto padrão com leitura sofisticada e toque tátil.',
+    desc: 'Convite principal, RSVP, envelope e papelaria de mesa pensados como uma coleção delicada, elegante e memorável desde o primeiro toque.',
     price: 'A partir de R$ 18/conj.',
     details: ['Envelope em linho', 'Foil dourado', 'Menu de mesa', 'Tag nominal'],
-    badge: 'Personalizado',
-    tone: 'gold',
-    kind: 'suite',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 2,
     cat: 'celebracao',
+    badge: 'Celebração',
     title: 'Kit festa infantil premium',
-    desc: 'Convites, toppers, cartões de lembrança e complementos gráficos com linguagem delicada e coleção coesa.',
+    desc: 'Uma família completa de convites, toppers, tags e cartões para deixar o universo da festa coeso, afetivo e encantador.',
     price: 'A partir de R$ 12/conj.',
     details: ['Convite principal', 'Tags e toppers', 'Cartão de agradecimento', 'Paleta temática'],
-    badge: 'Sob medida',
-    tone: 'terracotta',
-    kind: 'suite',
+    image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 3,
     cat: 'corporativo',
+    badge: 'Corporativo',
     title: 'Kit onboarding de marca',
-    desc: 'Bloco, carta de boas-vindas, folder e elementos institucionais para uma entrada de marca mais memorável.',
+    desc: 'Bloco, carta de boas-vindas, folder e elementos institucionais para transformar o primeiro contato com a marca em experiência.',
     price: 'A partir de R$ 85/kit',
     details: ['Caderno A5', 'Folder institucional', 'Cartão da marca', 'Embalagem coordenada'],
-    badge: 'Corporativo',
-    tone: 'ink',
-    kind: 'corporate',
+    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 4,
     cat: 'corporativo',
+    badge: 'Corporativo',
     title: 'Identidade impressa executiva',
-    desc: 'Cartão, pasta, envelope, bloco e papel timbrado com acabamento refinado para fortalecer percepção de marca.',
+    desc: 'Cartões, pastas, envelopes e blocos com acabamento refinado para empresas que precisam comunicar organização, cuidado e valor.',
     price: 'Sob consulta',
     details: ['Cartão frente e verso', 'Envelope coordenado', 'Pasta de proposta', 'Bloco executivo'],
-    badge: null,
-    tone: 'sage',
-    kind: 'corporate',
+    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 5,
     cat: 'papelaria',
+    badge: 'Papelaria',
     title: 'Planner semanal premium',
-    desc: 'Produto de linha para rotina, organização e presente. Visual limpo, capa especial e miolo funcional.',
+    desc: 'Produto pronto para rotina, organização e presente. Capa especial, layout funcional e visual que chama atenção sem esforço.',
     price: 'A partir de R$ 68/unid.',
     details: ['Capa especial', 'Miolo semanal', 'Controle de metas', 'Bolso interno'],
-    badge: 'Linha papelaria',
-    tone: 'sage',
-    kind: 'planner',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 6,
     cat: 'papelaria',
+    badge: 'Papelaria',
     title: 'Desk set presenteável',
-    desc: 'Conjunto com bloco, cartões, adesivos e marcador pensado para venda em vitrine ou presente corporativo.',
+    desc: 'Conjunto com bloco, cartões, adesivos e marcador para presentear, montar vitrine ou elevar a experiência no escritório.',
     price: 'A partir de R$ 54/kit',
     details: ['Bloco destacável', 'Marcador', 'Mini cartões', 'Cinta personalizada'],
-    badge: 'Pronta entrega',
-    tone: 'gold',
-    kind: 'desk',
+    image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 7,
     cat: 'papelaria',
-    title: 'Cartões e tags de loja',
-    desc: 'Peças de apoio para embalagem, presente e recado de marca com visual consistente e acabamento premium.',
-    price: 'A partir de R$ 1,20/unid.',
-    details: ['Tag com furo', 'Cartão de cuidado', 'Mensagem de presente', 'Cartela adesiva'],
-    badge: null,
-    tone: 'terracotta',
-    kind: 'desk',
+    badge: 'Escolar',
+    title: 'Kit escolar premium',
+    desc: 'Caderno, fichário, etiquetas e complementos visuais para uma linha escolar mais organizada, desejável e comercialmente forte.',
+    price: 'A partir de R$ 72/kit',
+    details: ['Caderno capa dura', 'Etiquetas escolares', 'Marcadores', 'Bolsa organizadora'],
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 8,
-    cat: 'packaging',
-    title: 'Caixa boutique com insert',
-    desc: 'Packaging para varejo, presentes ou lançamentos com estrutura pensada para unboxing e valor percebido.',
-    price: 'A partir de R$ 8/unid.',
-    details: ['Caixa rígida', 'Insert interno', 'Selo e cinta', 'Cartão de marca'],
-    badge: 'Mais pedido',
-    tone: 'ink',
-    kind: 'packaging',
+    cat: 'papelaria',
+    badge: 'Escritório',
+    title: 'Linha para mesa e escritório',
+    desc: 'Blocos, porta-recados, cartões e organizadores com acabamento premium para ambientes de trabalho que pedem presença visual.',
+    price: 'A partir de R$ 32/unid.',
+    details: ['Bloco de mesa', 'Cartões de recado', 'Organizador visual', 'Embalagem presenteável'],
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 9,
     cat: 'packaging',
+    badge: 'Packaging',
+    title: 'Caixa boutique com insert',
+    desc: 'Estrutura pensada para unboxing, presente, lançamento ou varejo. O tipo de embalagem que já comunica valor antes da abertura.',
+    price: 'A partir de R$ 8/unid.',
+    details: ['Caixa rígida', 'Insert interno', 'Selo e cinta', 'Cartão de marca'],
+    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    id: 10,
+    cat: 'packaging',
+    badge: 'Packaging',
     title: 'Etiquetas e selos premium',
-    desc: 'Tags, selos e etiquetas que complementam produto, embalagem e experiência de compra sem parecer genérico.',
+    desc: 'Pequenos detalhes que seguram a narrativa da marca até o fim: tags, selos, adesivos e cartões de cuidado com acabamento marcante.',
     price: 'A partir de R$ 1,40/unid.',
     details: ['Hot stamping opcional', 'Corte especial', 'Cordão ou adesivo', 'Frente e verso'],
-    badge: null,
-    tone: 'gold',
-    kind: 'packaging',
+    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80',
   },
 ];
-
-const collections = [
-  {
-    title: 'Personalizados sob medida',
-    desc: 'Projetos que começam no briefing e terminam em uma coleção visual completa para evento, marca ou lançamento.',
-    tone: 'gold',
-    items: ['Convites', 'Papelaria de mesa', 'Kits corporativos', 'Projetos editoriais'],
-  },
-  {
-    title: 'Linha de papelaria premium',
-    desc: 'Itens que não dependem de personalização total para vender bem e transmitir cuidado visual.',
-    tone: 'sage',
-    items: ['Planners', 'Cadernos', 'Desk sets', 'Cartões e tags'],
-  },
-  {
-    title: 'Packaging e apoio de marca',
-    desc: 'Peças para compor vitrine, unboxing, presente e experiência de compra com melhor percepção de valor.',
-    tone: 'terracotta',
-    items: ['Caixas', 'Etiquetas', 'Selos', 'Cartões de cuidado'],
-  },
-];
-
-function ProductMock({ tone, kind }) {
-  return (
-    <div className={`produto-mock produto-mock--${tone} produto-mock--${kind}`}>
-      <div className="produto-mock__plane produto-mock__plane--back" />
-      <div className="produto-mock__plane produto-mock__plane--front" />
-      <div className="produto-mock__seal" />
-      <div className="produto-mock__text">
-        <span />
-        <span />
-        <span />
-      </div>
-    </div>
-  );
-}
 
 export default function Servicos() {
   useReveal();
-  const [active, setActive] = useState('todos');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = categories.some((item) => item.id === searchParams.get('categoria'))
+    ? searchParams.get('categoria')
+    : 'todos';
+  const [active, setActive] = useState(initialCategory);
   const [expanded, setExpanded] = useState(null);
 
-  const filtered = active === 'todos' ? products : products.filter((product) => product.cat === active);
+  useEffect(() => {
+    const current = searchParams.get('categoria');
+    if (current && categories.some((item) => item.id === current)) {
+      setActive(current);
+      return;
+    }
+    setActive('todos');
+  }, [searchParams]);
+
+  const filtered = useMemo(() => (
+    active === 'todos' ? products : products.filter((product) => product.cat === active)
+  ), [active]);
+
+  const selectCategory = (categoryId) => {
+    setExpanded(null);
+    if (categoryId === 'todos') {
+      setSearchParams({});
+      return;
+    }
+    setSearchParams({ categoria: categoryId });
+  };
 
   return (
     <div className="servicos">
@@ -163,50 +173,32 @@ export default function Servicos() {
           <div className="servicos-hero__copy">
             <span className="eyebrow reveal">Catálogo Folia</span>
             <h1 className="display-1 reveal reveal-delay-1">
-              Um catálogo mais visual, claro e convincente para mostrar o que vocês realmente entregam.
+              Produtos e serviços apresentados com mais clareza, mais apelo e mais intenção de compra.
             </h1>
             <p className="body-large reveal reveal-delay-2">
-              Aqui o cliente encontra tanto produtos personalizados quanto itens de papelaria premium e peças de packaging,
-              com exemplos visuais suficientes para confiar antes de pedir orçamento.
+              Aqui o cliente encontra personalizados, papelaria para escola e escritório, materiais corporativos e packaging com exemplos visuais reais.
+              A ideia é tirar o catálogo do campo abstrato e trazer vontade de clicar, pedir e comprar.
             </p>
-            <div className="servicos-hero__chips reveal reveal-delay-3">
-              <span>Personalizados</span>
-              <span>Linha papelaria</span>
-              <span>Packaging</span>
-              <span>Corporativo</span>
-            </div>
           </div>
 
-          <div className="servicos-hero__board reveal-right card">
-            <div className="servicos-hero__board-grid">
-              {products.slice(0, 4).map((product) => (
-                <article key={product.id} className="servicos-hero__sample">
-                  <ProductMock tone={product.tone} kind={product.kind} />
-                  <div>
-                    <p>{product.badge || 'Produto Folia'}</p>
-                    <strong>{product.title}</strong>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="servicos-hero__board reveal-right">
+            {highlightFamilies.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`hero-family-card hero-family-card--${index + 1}`}
+                onClick={() => selectCategory(item.id)}
+              >
+                <img src={item.image} alt={item.title} loading="lazy" />
+                <div className="hero-family-card__overlay" />
+                <div className="hero-family-card__body">
+                  <h2>{item.title}</h2>
+                  <p>{item.text}</p>
+                  <span>Filtrar esta categoria</span>
+                </div>
+              </button>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <section className="collections-strip section">
-        <div className="container-wide collections-strip__grid">
-          {collections.map((collection, index) => (
-            <article className={`collection-card card reveal reveal-delay-${index + 1}`} key={collection.title}>
-              <div className={`collection-card__dot collection-card__dot--${collection.tone}`} />
-              <h2 className="heading-1">{collection.title}</h2>
-              <p className="body-base">{collection.desc}</p>
-              <div className="collection-card__tags">
-                {collection.items.map((item) => (
-                  <span className="tag" key={item}>{item}</span>
-                ))}
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
@@ -216,8 +208,9 @@ export default function Servicos() {
             {categories.map((category) => (
               <button
                 key={category.id}
+                type="button"
                 className={`filter-btn ${active === category.id ? 'active' : ''}`}
-                onClick={() => setActive(category.id)}
+                onClick={() => selectCategory(category.id)}
               >
                 {category.label}
               </button>
@@ -231,10 +224,8 @@ export default function Servicos() {
           <div className="servicos-grid">
             {filtered.map((product, index) => (
               <article className={`produto-card reveal reveal-delay-${(index % 3) + 1}`} key={product.id}>
-                {product.badge && <div className="produto-badge">{product.badge}</div>}
-                <div className="produto-visual">
-                  <ProductMock tone={product.tone} kind={product.kind} />
-                </div>
+                <div className="produto-badge">{product.badge}</div>
+                <img className="produto-visual" src={product.image} alt={product.title} loading="lazy" />
                 <div className="produto-body">
                   <div className="produto-meta">
                     <span className="produto-category">{categories.find((category) => category.id === product.cat)?.label}</span>
@@ -243,10 +234,11 @@ export default function Servicos() {
                   <h3 className="produto-title">{product.title}</h3>
                   <p className="produto-desc">{product.desc}</p>
                   <button
+                    type="button"
                     className="produto-details-btn btn btn-ghost"
                     onClick={() => setExpanded(expanded === product.id ? null : product.id)}
                   >
-                    {expanded === product.id ? 'Ocultar detalhes' : 'Ver composição'}
+                    {expanded === product.id ? 'Ocultar composição' : 'Ver composição'}
                   </button>
                   {expanded === product.id && (
                     <ul className="produto-details-list">
@@ -256,9 +248,7 @@ export default function Servicos() {
                     </ul>
                   )}
                   <div className="produto-footer">
-                    <Link to="/contato" className="btn btn-primary">
-                      Solicitar orçamento
-                    </Link>
+                    <Link to="/contato" className="btn btn-primary">Solicitar orçamento</Link>
                   </div>
                 </div>
               </article>
@@ -270,23 +260,23 @@ export default function Servicos() {
       <section className="section diferenciais">
         <div className="container-wide diferenciais__layout">
           <div className="section-header reveal">
-            <span className="eyebrow">Por que funciona melhor</span>
-            <h2 className="display-2">Produto visível aumenta confiança e deixa a oferta mais clara.</h2>
+            <span className="eyebrow">Mais do que descrição</span>
+            <h2 className="display-2">Uma apresentação mais chamativa faz o cliente sentir qualidade antes mesmo do primeiro orçamento.</h2>
           </div>
 
           <div className="diferenciais-grid">
             {[
               {
-                title: 'Mais percepção de valor',
-                desc: 'Quando o cliente vê formato, composição e acabamento, ele entende melhor a diferença entre uma peça simples e uma peça premium.',
+                title: 'Desejo visual imediato',
+                desc: 'O produto aparece com presença, enquadramento e contexto, o que gera interesse mais rápido do que uma lista seca de serviços.',
               },
               {
-                title: 'Menos dúvida comercial',
-                desc: 'Exemplos resolvem parte das perguntas antes do contato e ajudam o lead a chegar mais preparado para orçar.',
+                title: 'Oferta mais bem explicada',
+                desc: 'A separação entre personalizados, papelaria pronta, escola, escritório e packaging deixa claro o que a Folia realmente entrega.',
               },
               {
-                title: 'Mix mais honesto',
-                desc: 'A página deixa evidente que a Folia não trabalha só com personalizados, mas também com produtos de papelaria e apoio de marca.',
+                title: 'Contato mais qualificado',
+                desc: 'Quando o visitante já entendeu material, faixa de produto e atmosfera da marca, a conversa comercial fica mais madura e objetiva.',
               },
             ].map((item, index) => (
               <article className={`diferencial-item card reveal reveal-delay-${index + 1}`} key={item.title}>
@@ -301,14 +291,12 @@ export default function Servicos() {
       <section className="section servicos-cta">
         <div className="container">
           <div className="servicos-cta__inner reveal">
-            <span className="eyebrow">Precisa de algo fora da grade?</span>
-            <h2 className="display-2">Também montamos combinações exclusivas entre papelaria, produto e embalagem.</h2>
+            <span className="eyebrow">Quer uma composição exclusiva?</span>
+            <h2 className="display-2">Também combinamos papelaria, produto e embalagem em uma solução completa para sua necessidade.</h2>
             <p className="body-large">
-              Se a solução ideal envolve criação personalizada junto de itens de linha, estruturamos o mix completo para sua necessidade.
+              Se a melhor resposta não estiver em uma categoria só, montamos um mix sob medida com direção visual, curadoria de materiais e apresentação coerente.
             </p>
-            <Link to="/contato" className="btn btn-gold btn-lg">
-              Falar com a equipe
-            </Link>
+            <Link to="/contato" className="btn btn-gold btn-lg">Falar com a equipe</Link>
           </div>
         </div>
       </section>

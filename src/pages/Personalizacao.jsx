@@ -10,6 +10,7 @@ const STEPS = [
     title: 'Você nos conta sua ideia',
     desc: 'Tudo começa com uma conversa. Você preenche nosso briefing detalhado ou nos chama diretamente. Quanto mais contexto você compartilha — o evento, o público, a emoção que quer transmitir — mais preciso será o resultado.',
     detail: 'Briefing via formulário, WhatsApp ou reunião online. Prazo de resposta: até 24h.',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
   },
   {
     num: '02',
@@ -17,6 +18,7 @@ const STEPS = [
     title: 'Desenvolvemos o conceito',
     desc: 'Nossa equipe mergulha na sua história. Pesquisamos referências, desenvolvemos paleta de cores, escolhemos tipografias e criamos um moodboard exclusivo antes de qualquer linha de design.',
     detail: 'Entrega de conceito criativo em até 5 dias úteis após aprovação do briefing.',
+    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80',
   },
   {
     num: '03',
@@ -24,6 +26,7 @@ const STEPS = [
     title: 'Preview e refinamento',
     desc: 'Você recebe um preview digital em alta resolução com todas as peças do projeto. Analisamos juntos cada detalhe e fazemos quantos ajustes forem necessários até que tudo esteja exatamente certo.',
     detail: 'Até 3 rodadas de revisão inclusas. Revisões adicionais por valor acordado.',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
   },
   {
     num: '04',
@@ -31,6 +34,7 @@ const STEPS = [
     title: 'Produção com atenção artesanal',
     desc: 'Com a aprovação final, entramos em produção. Selecionamos os papéis, configuramos as máquinas, aplicamos os acabamentos especiais. Cada lote passa por inspeção visual rigorosa antes do empacotamento.',
     detail: 'Prazo de produção: 10 a 20 dias úteis conforme complexidade e acabamentos.',
+    image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1400&q=80',
   },
   {
     num: '05',
@@ -38,25 +42,26 @@ const STEPS = [
     title: 'Entrega com carinho',
     desc: 'Cada pedido é embalado individualmente com papel tissue, fita e cartão de identificação. Enviamos por transportadora especializada em materiais gráficos para garantir que tudo chegue perfeito.',
     detail: 'Entrega para todo o Brasil. Retirada disponível em São Paulo – SP.',
+    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
   },
 ];
 
 const MATERIALS = [
-  { name: 'Cotton 300g', desc: 'Textura suave e macia. Ideal para convites de casamento e eventos sofisticados.', color: '#F5F0E8' },
-  { name: 'Linho 240g', desc: 'Textura natural com padrão de trama. Rústico-elegante, muito usado em casamentos no campo.', color: '#EDE8DC' },
-  { name: 'Perolado 250g', desc: 'Brilho discreto e sofisticado. Perfeito para eventos noturnos e festas formais.', color: '#F2EEF5' },
-  { name: 'Kraft 300g', desc: 'Visual orgânico e sustentável. Tendência em eventos boho, rústicos e ambientemente conscientes.', color: '#D4C4A8' },
-  { name: 'Couchê Matte 350g', desc: 'Base neutra e premium para impressões de alta saturação de cores. Versátil e elegante.', color: '#F0EDE8' },
-  { name: 'Color Plus 180g', desc: 'Disponível em +40 cores. Ideal para projetos coloridos, infantis ou com paletas específicas.', color: '#E8D5C4' },
+  { name: 'Cotton 300g', desc: 'Textura suave e macia. Ideal para convites de casamento e eventos sofisticados.', color: '#F5F0E8', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Linho 240g', desc: 'Textura natural com padrão de trama. Rústico-elegante, muito usado em casamentos no campo.', color: '#EDE8DC', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Perolado 250g', desc: 'Brilho discreto e sofisticado. Perfeito para eventos noturnos e festas formais.', color: '#F2EEF5', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Kraft 300g', desc: 'Visual orgânico e sustentável. Tendência em eventos boho, rústicos e ambientemente conscientes.', color: '#D4C4A8', image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Couchê Matte 350g', desc: 'Base neutra e premium para impressões de alta saturação de cores. Versátil e elegante.', color: '#F0EDE8', image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Color Plus 180g', desc: 'Disponível em +40 cores. Ideal para projetos coloridos, infantis ou com paletas específicas.', color: '#E8D5C4', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80' },
 ];
 
 const FINISHES = [
-  { name: 'Foil Dourado', icon: '✦', desc: 'Película metálica prensada a quente. O acabamento mais desejado em papelaria premium.' },
-  { name: 'Foil Prata', icon: '◈', desc: 'Elegância moderna e contemporânea. Ótimo para paletas frias e estilos minimalistas.' },
-  { name: 'Relevo Seco', icon: '◎', desc: 'Textura tátil sem tinta. Cria profundidade e sofisticação ao toque.' },
-  { name: 'Corte a Laser', icon: '◍', desc: 'Recortes precisos com formas complexas. Transforma o convite numa obra de arte.' },
-  { name: 'Verniz UV', icon: '◇', desc: 'Brilho localizado em áreas específicas. Contraste entre matte e brilhante.' },
-  { name: 'Letterpress', icon: '◉', desc: 'Impressão tipográfica com pressão. Marca visível e tátil, artesanal e atemporal.' },
+  { name: 'Foil Dourado', icon: '✦', desc: 'Película metálica prensada a quente. O acabamento mais desejado em papelaria premium.', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Foil Prata', icon: '◈', desc: 'Elegância moderna e contemporânea. Ótimo para paletas frias e estilos minimalistas.', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Relevo Seco', icon: '◎', desc: 'Textura tátil sem tinta. Cria profundidade e sofisticação ao toque.', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Corte a Laser', icon: '◍', desc: 'Recortes precisos com formas complexas. Transforma o convite numa obra de arte.', image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Verniz UV', icon: '◇', desc: 'Brilho localizado em áreas específicas. Contraste entre matte e brilhante.', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Letterpress', icon: '◉', desc: 'Impressão tipográfica com pressão. Marca visível e tátil, artesanal e atemporal.', image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80' },
 ];
 
 /* ─── Mini simulador ─────────────────────────────── */
@@ -199,6 +204,7 @@ export default function Personalizacao() {
             <div className="pers-steps-content">
               <div className="step-panel" key={activeStep}>
                 <div className="step-icon">{STEPS[activeStep].icon}</div>
+                  <img className="step-image" src={STEPS[activeStep].image} alt={STEPS[activeStep].title} loading="lazy" />
                 <span className="step-num eyebrow">{STEPS[activeStep].num} / 05</span>
                 <h3 className="step-title display-3">{STEPS[activeStep].title}</h3>
                 <p className="step-desc body-large">{STEPS[activeStep].desc}</p>
@@ -242,6 +248,7 @@ export default function Personalizacao() {
             {MATERIALS.map((m, i) => (
               <div className={`material-card reveal reveal-delay-${(i % 3) + 1}`} key={m.name}>
                 <div className="material-swatch" style={{ background: m.color }}>
+                  <img className="material-photo" src={m.image} alt={m.name} loading="lazy" />
                   <div className="material-texture" />
                 </div>
                 <div className="material-info">
@@ -264,6 +271,7 @@ export default function Personalizacao() {
           <div className="finishes-grid">
             {FINISHES.map((f, i) => (
               <div className={`finish-card reveal reveal-delay-${(i % 3) + 1}`} key={f.name}>
+                <img className="finish-photo" src={f.image} alt={f.name} loading="lazy" />
                 <div className="finish-icon">{f.icon}</div>
                 <h3 className="finish-name">{f.name}</h3>
                 <p className="finish-desc">{f.desc}</p>
@@ -316,12 +324,14 @@ export default function Personalizacao() {
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`faq-item reveal ${open ? 'open' : ''}`}>
+    <div className={`faq-item ${open ? 'open' : ''}`}>
       <button className="faq-q" onClick={() => setOpen(v => !v)}>
         <span>{q}</span>
         <span className="faq-icon">{open ? '−' : '+'}</span>
       </button>
-      {open && <p className="faq-a">{a}</p>}
+      <div className="faq-content" aria-hidden={!open}>
+        <p className="faq-a">{a}</p>
+      </div>
     </div>
   );
 }

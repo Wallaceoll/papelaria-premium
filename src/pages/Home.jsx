@@ -198,15 +198,14 @@ export default function Home() {
               Papelaria com presença de <em className="hero__em" ref={wordRef}>{FLOAT_WORDS[0]}</em>,
               <br />mais leve, tátil e memorável.
             </h1>
-            <p className="hero__sub body-large reveal reveal-delay-3">
+                    Folia Studio de papelaria
               Desenvolvemos projetos personalizados e também linhas de papelaria premium para quem precisa vender melhor,
               presentear melhor ou simplesmente apresentar melhor o próprio universo.
-            </p>
-            <div className="hero__actions reveal reveal-delay-4">
+                    Papelaria com linguagem de <em className="hero__em" ref={wordRef}>{FLOAT_WORDS[0]}</em>,<br />visual real e desejo imediato.
               <Link to="/contato" className="btn btn-primary btn-lg">
                 Solicitar orçamento
-              </Link>
-              <Link to="/servicos" className="btn btn-outline btn-lg">
+                    Criamos produtos personalizados e também linhas prontas de papelaria, escola, escritório, presentes e packaging.
+                    A proposta aqui é simples: mostrar melhor para vender melhor e gerar mais confiança desde a primeira visita.
                 Ver exemplos de produtos
               </Link>
             </div>
@@ -215,20 +214,16 @@ export default function Home() {
               <span>Papelaria para marcas</span>
               <span>Planners, blocos e presentes</span>
             </div>
-          </div>
-
-          <div className="hero-showcase reveal-right">
-            <div className="hero-showcase__main card">
-              <div className="hero-showcase__header">
-                <span className="eyebrow">Produtos em destaque</span>
-                <p>Exemplos reais de composição visual</p>
-              </div>
-              <div className="hero-showcase__grid">
-                {showcaseProducts.map((item) => (
-                  <article className="showpiece" key={item.title}>
-                    <ProductMock tone={item.tone} kind="suite" />
-                    <div className="showpiece__body">
-                      <span className="showpiece__subtitle">{item.subtitle}</span>
+                  {HERO_PRODUCTS.map((item) => (
+                    <article className="showpiece showpiece--photo card" key={item.title}>
+                      <img className="showpiece__image" src={item.image} alt={item.title} loading="lazy" />
+                      <div className="showpiece__body">
+                        <span className="showpiece__subtitle">{item.subtitle}</span>
+                        <h3>{item.title}</h3>
+                        <Link to={item.to} className="showpiece__link">Explorar categoria</Link>
+                      </div>
+                    </article>
+                  ))}
                       <h3>{item.title}</h3>
                       <ul>
                         {item.lines.map((line) => (
@@ -239,25 +234,24 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-            </div>
-            <div className="hero-showcase__aside card">
+                    Em vez de blocos decorativos sem função, a home agora trabalha como vitrine: apresenta as frentes principais da Folia e leva direto para o filtro correto em serviços.
               <span className="eyebrow">Mix de catálogo</span>
               <strong>Personalizados + linha de papelaria</strong>
               <p>
                 A experiência não depende só do texto. Por isso a vitrine já apresenta formatos, materiais e tipos de produto logo na primeira dobra.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="trust-strip">
-        <div className="container-wide trust-strip__inner reveal">
-          <span>Convites</span>
-          <span>Desk sets</span>
-          <span>Planners</span>
-          <span>Packaging</span>
-          <span>Papelaria corporativa</span>
+                  {CATALOG_ITEMS.map((item, index) => (
+                    <article className={`catalog-card card reveal reveal-delay-${(index % 4) + 1}`} key={item.title}>
+                      <img className="catalog-card__image" src={item.image} alt={item.title} loading="lazy" />
+                      <div className="catalog-card__overlay" />
+                      <div className="catalog-card__body">
+                        <h3 className="heading-1">{item.title}</h3>
+                        <p className="body-base">{item.desc}</p>
+                        <Link to={item.to} className="catalog-card__cta btn btn-primary">
+                          {item.cta}
+                        </Link>
+                      </div>
+                    </article>
+                  ))}
           <span>Presentes em papel</span>
         </div>
       </section>
@@ -270,13 +264,14 @@ export default function Home() {
             <p className="body-large">
               A inspiração da referência está na força da composição: títulos grandes, respiro, prova visual e seções que explicam rapidamente o valor da solução.
               Aqui traduzimos isso para uma papelaria clara, sofisticada e confiável.
-            </p>
-          </div>
-
-          <div className="catalog-intro__cards">
-            {sampleFamilies.map((family, index) => (
-              <article className={`catalog-family card reveal reveal-delay-${index + 1}`} key={family.eyebrow}>
-                <span className="eyebrow">{family.eyebrow}</span>
+                  {PROCESS.map((item, index) => (
+                    <div className={`process-item reveal reveal-delay-${index + 1}`} key={item.step}>
+                      <div className="process-icon">{item.icon}</div>
+                      <div className="process-step eyebrow">0{item.step}</div>
+                      <h3 className="process-title">{item.title}</h3>
+                      <p className="process-desc">{item.desc}</p>
+                    </div>
+                  ))}
                 <h3 className="heading-1">{family.title}</h3>
                 <p className="body-base">{family.desc}</p>
                 <div className="catalog-family__chips">
@@ -288,19 +283,19 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section featured-services featured-services--light">
-        <div className="container-wide">
-          <div className="section-header reveal">
-            <span className="eyebrow">Vitrine principal</span>
-            <h2 className="display-2">Exemplos de produtos para o cliente visualizar melhor.</h2>
-          </div>
-
-          <div className="fs-grid fs-grid--visual">
-            {featuredCards.map((item, index) => (
-              <article className={`fs-card fs-card--visual reveal reveal-delay-${(index % 4) + 1}`} key={item.num}>
+                  {TESTIMONIALS.map((item, index) => (
+                    <article className={`testimonial-card reveal reveal-delay-${index + 1}`} key={item.author}>
+                      <span className="testimonial-kicker">Feedback de cliente</span>
+                      <blockquote className="testimonial-quote">“{item.quote}”</blockquote>
+                      <div className="testimonial-author">
+                        <div className="testimonial-avatar">{item.author[0]}</div>
+                        <div>
+                          <p className="testimonial-name">{item.author}</p>
+                          <p className="testimonial-role">{item.role}</p>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
                 <div className="fs-card__topline">
                   <div className="fs-card__num eyebrow">{item.num}</div>
                   <span className={`fs-card__tone fs-card__tone--${item.tone}`} />
