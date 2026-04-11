@@ -209,11 +209,32 @@
   backdrop-filter: blur(14px);
   text-align: left;
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth);
+  isolation: isolate;
 }
 
 .hero-family-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+}
+
+.hero-family-card::after {
+  content: '';
+  position: absolute;
+  inset: auto -15% -45% auto;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.12), transparent 70%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--dur-base) var(--ease-smooth), transform var(--dur-base) var(--ease-smooth);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-family-card:hover::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .hero-family-card img {
@@ -222,6 +243,12 @@
   height: 10rem;
   object-fit: cover;
   border-radius: var(--radius-md);
+  transition: transform var(--dur-base) var(--ease-smooth), filter var(--dur-base) var(--ease-smooth);
+}
+
+.hero-family-card:hover img {
+  transform: scale(1.04);
+  filter: saturate(1.05);
 }
 
 .hero-family-card__overlay {
@@ -234,14 +261,39 @@
   justify-content: center;
   align-items: flex-start;
   gap: var(--space-2);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-family-card__subtitle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.16), rgba(201, 168, 76, 0.08));
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  box-shadow: 0 10px 24px rgba(201, 168, 76, 0.08);
   font-size: var(--text-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold-dark);
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth);
+}
+
+.hero-family-card__subtitle::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--gold-dark);
+  box-shadow: 0 0 0 0.22rem rgba(201, 168, 76, 0.14);
+}
+
+.hero-family-card:hover .hero-family-card__subtitle {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.22), rgba(201, 168, 76, 0.12));
+  box-shadow: 0 14px 30px rgba(201, 168, 76, 0.12);
 }
 
 .hero-family-card__body h2 {
