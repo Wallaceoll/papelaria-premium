@@ -10,19 +10,19 @@ const HERO_PRODUCTS = [
     title: 'Convites e celebrações',
     subtitle: 'Personalizados',
     image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80',
-    to: '/servicos',
+    to: '/servicos?categoria=celebracao',
   },
   {
     title: 'Papelaria para marcas',
     subtitle: 'Corporativo',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
+    to: '/servicos?categoria=corporativo',
   },
   {
     title: 'Planners, blocos e presentes',
     subtitle: 'Linha papelaria',
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=80',
+    to: '/servicos?categoria=papelaria',
   },
 ];
 
@@ -30,29 +30,29 @@ const CATALOG_ITEMS = [
   {
     title: 'Convites com direção de arte',
     desc: 'Suites completas com envelope, RSVP, menu e acabamentos que valorizam o momento desde o primeiro contato.',
-    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80',
+    to: '/servicos?categoria=celebracao',
     cta: 'Ver celebrações',
   },
   {
     title: 'Papelaria escolar e de escritório',
     desc: 'Cadernos, planners, blocos, desk sets e itens de rotina com visual premium e utilidade real no dia a dia.',
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?auto=format&fit=crop&w=1400&q=80',
+    to: '/servicos?categoria=papelaria',
     cta: 'Ver linha papelaria',
   },
   {
     title: 'Materiais para marcas e equipes',
     desc: 'Cartões, folders, onboarding, kits institucionais e peças impressas para transmitir organização e valor percebido.',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
+    to: '/servicos?categoria=corporativo',
     cta: 'Ver corporativo',
   },
   {
     title: 'Packaging e apoio de produto',
     desc: 'Caixas, cintas, cartões, etiquetas e selos para transformar entrega e unboxing em experiência de marca.',
-    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
-    to: '/servicos',
+    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1400&q=80',
+    to: '/servicos?categoria=packaging',
     cta: 'Ver packaging',
   },
 ];
@@ -159,14 +159,14 @@ export default function Home() {
               </div>
               <div className="hero-showcase__grid">
                 {HERO_PRODUCTS.map((item) => (
-                  <article className="showpiece showpiece--photo card" key={item.title}>
+                  <Link to={item.to} className="showpiece showpiece--photo card" key={item.title}>
                     <img className="showpiece__image" src={item.image} alt={item.title} loading="lazy" />
                     <div className="showpiece__body">
                       <span className="showpiece__subtitle">{item.subtitle}</span>
                       <h3>{item.title}</h3>
-                      <Link to={item.to} className="showpiece__link">Explorar categoria</Link>
+                      <span className="showpiece__link">Explorar categoria</span>
                     </div>
-                  </article>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -193,15 +193,19 @@ export default function Home() {
 
           <div className="catalog-intro__cards">
             {CATALOG_ITEMS.map((item, index) => (
-              <article className={`catalog-card card reveal reveal-delay-${(index % 4) + 1}`} key={item.title}>
+              <Link
+                to={item.to}
+                className={`catalog-card card reveal reveal-delay-${(index % 4) + 1}`}
+                key={item.title}
+              >
                 <img className="catalog-card__image" src={item.image} alt={item.title} loading="lazy" />
                 <div className="catalog-card__overlay" />
                 <div className="catalog-card__body">
                   <h3 className="heading-1">{item.title}</h3>
                   <p className="body-base">{item.desc}</p>
-                  <Link to={item.to} className="catalog-card__cta btn btn-primary">{item.cta}</Link>
+                  <span className="catalog-card__cta btn btn-primary">{item.cta}</span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
