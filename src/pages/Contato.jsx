@@ -54,6 +54,11 @@ export default function Contato() {
             Preencha o formulário abaixo com o máximo de detalhes.<br className="hide-mobile" />
             Nossa equipe retorna em até 24 horas úteis.
           </p>
+          <div className="contato-hero__meta reveal reveal-delay-3">
+            <span>Atendimento consultivo</span>
+            <span>WhatsApp direto</span>
+            <span>Resposta em até 24h úteis</span>
+          </div>
         </div>
       </section>
 
@@ -78,7 +83,7 @@ export default function Contato() {
                   ].map(item => (
                     <div className="info-item" key={item.label}>
                       <span className="info-icon">{item.icon}</span>
-                      <div>
+                      <div className="info-item__body">
                         <p className="info-label eyebrow">{item.label}</p>
                         {item.href
                           ? <a href={item.href} className="info-value">{item.value}</a>

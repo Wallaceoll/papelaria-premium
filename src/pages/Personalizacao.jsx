@@ -90,12 +90,19 @@ function Simulator() {
       </div>
 
       <div className="sim-controls">
+        <div className="sim-intro">
+          <h3 className="heading-1">Escolha materiais e entenda combinações</h3>
+          <p className="body-base">
+            Esta etapa serve para explorar possibilidades. Quando quiser seguir, você pode abrir o catálogo ou partir direto para o orçamento.
+          </p>
+        </div>
         <div className="sim-group">
           <label className="sim-label eyebrow">Tipo de papel</label>
           <div className="sim-options">
             {MATERIALS.map((m, i) => (
               <button
                 key={m.name}
+                type="button"
                 className={`sim-option ${sel.material === i ? 'active' : ''}`}
                 onClick={() => setSel(s => ({ ...s, material: i }))}
               >
@@ -112,6 +119,7 @@ function Simulator() {
             {FINISHES.map((f, i) => (
               <button
                 key={f.name}
+                type="button"
                 className={`sim-option ${sel.finish === i ? 'active' : ''}`}
                 onClick={() => setSel(s => ({ ...s, finish: i }))}
               >
@@ -128,6 +136,7 @@ function Simulator() {
             {['#C9A84C', '#6B6560', '#8BA89A', '#C4785A', '#1A1714', '#9A7B2E'].map(c => (
               <button
                 key={c}
+                type="button"
                 className={`sim-color ${sel.color === c ? 'active' : ''}`}
                 style={{ background: c }}
                 onClick={() => setSel(s => ({ ...s, color: c }))}
@@ -148,9 +157,14 @@ function Simulator() {
           />
         </div>
 
-        <Link to="/contato" className="btn btn-primary btn-lg sim-cta">
-          Quero este projeto →
-        </Link>
+        <div className="sim-actions">
+          <Link to="/contato" className="btn btn-primary btn-lg sim-cta">
+            Quero este projeto →
+          </Link>
+          <Link to="/servicos" className="btn btn-outline btn-lg sim-cta-alt">
+            Ver outros produtos
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -175,6 +189,10 @@ export default function Personalizacao() {
             Personalização não é só colocar um nome. É entender sua história, <br className="hide-mobile" />
             sua estética e criar algo que só poderia existir para você.
           </p>
+          <div className="pers-hero__actions reveal reveal-delay-3">
+            <Link to="/servicos" className="btn btn-outline btn-lg">Ver serviços</Link>
+            <Link to="/contato" className="btn btn-primary btn-lg">Pedir orçamento</Link>
+          </div>
         </div>
       </section>
 
@@ -191,6 +209,7 @@ export default function Personalizacao() {
               {STEPS.map((s, i) => (
                 <button
                   key={s.num}
+                  type="button"
                   className={`step-nav-btn ${activeStep === i ? 'active' : ''}`}
                   onClick={() => setActiveStep(i)}
                 >
@@ -215,6 +234,7 @@ export default function Personalizacao() {
                 <div className="step-nav-arrows">
                   <button
                     className="btn btn-outline"
+                    type="button"
                     onClick={() => setActiveStep(i => Math.max(0, i - 1))}
                     disabled={activeStep === 0}
                   >
@@ -222,6 +242,7 @@ export default function Personalizacao() {
                   </button>
                   <button
                     className="btn btn-primary"
+                    type="button"
                     onClick={() => setActiveStep(i => Math.min(STEPS.length - 1, i + 1))}
                     disabled={activeStep === STEPS.length - 1}
                   >
@@ -325,12 +346,14 @@ function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={`faq-item ${open ? 'open' : ''}`}>
-      <button className="faq-q" onClick={() => setOpen(v => !v)}>
+      <button type="button" className="faq-q" onClick={() => setOpen(v => !v)}>
         <span>{q}</span>
         <span className="faq-icon">{open ? '−' : '+'}</span>
       </button>
       <div className="faq-content" aria-hidden={!open}>
-        <p className="faq-a">{a}</p>
+        <div>
+          <p className="faq-a">{a}</p>
+        </div>
       </div>
     </div>
   );

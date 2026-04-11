@@ -9,6 +9,12 @@
 }
 .pers-hero h1 { max-width: 650px; }
 
+.pers-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
 /* ─── PROCESS ───────────────────────────────────── */
 .pers-steps {
   display: grid;
@@ -294,6 +300,13 @@
   flex-direction: column;
   gap: var(--space-8);
 }
+.sim-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-soft);
+}
 .sim-group { display: flex; flex-direction: column; gap: var(--space-3); }
 .sim-label { color: var(--ink-muted); }
 .sim-options {
@@ -350,7 +363,14 @@
   max-width: 340px;
 }
 .sim-input:focus { border-color: var(--gold); }
-.sim-cta { width: fit-content; }
+.sim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.sim-cta,
+.sim-cta-alt { width: fit-content; }
 
 /* ─── FAQ ───────────────────────────────────────── */
 .faq-list { display: flex; flex-direction: column; gap: var(--space-3); max-width: 760px; }
@@ -413,4 +433,13 @@
   .step-nav-arrow { display: none; }
   .materials-grid { grid-template-columns: 1fr; }
   .finishes-grid { grid-template-columns: 1fr; }
+  .pers-hero__actions,
+  .sim-actions {
+    flex-direction: column;
+  }
+  .pers-hero__actions .btn,
+  .sim-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
