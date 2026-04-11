@@ -7,22 +7,39 @@ const FLOAT_WORDS = ['casamento', 'marca', 'evento', 'escritório', 'presente', 
 
 const HERO_PRODUCTS = [
   {
-    title: 'Convites e celebrações',
-    subtitle: 'Personalizados',
-    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80',
-    to: '/servicos?categoria=celebracao#catalogo',
+    title: 'Pacotes montados conforme a escolha do cliente',
+    subtitle: 'Pacotes personalizados',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
+    to: '/contato',
+    cta: 'Pedir orçamento sob medida',
   },
   {
-    title: 'Papelaria para marcas',
+    title: 'Convites, menus e kits especiais',
+    subtitle: 'Celebração',
+    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80',
+    to: '/servicos?categoria=celebracao#catalogo',
+    cta: 'Explorar categoria',
+  },
+  {
+    title: 'Papelaria para marcas e equipes',
     subtitle: 'Corporativo',
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
     to: '/servicos?categoria=corporativo#catalogo',
+    cta: 'Explorar categoria',
   },
   {
     title: 'Planners, blocos e presentes',
-    subtitle: 'Linha papelaria',
+    subtitle: 'Papelaria',
     image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=80',
     to: '/servicos?categoria=papelaria#catalogo',
+    cta: 'Explorar categoria',
+  },
+  {
+    title: 'Caixas, etiquetas e unboxing',
+    subtitle: 'Packaging',
+    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80',
+    to: '/servicos?categoria=packaging#catalogo',
+    cta: 'Explorar categoria',
   },
 ];
 
@@ -155,7 +172,7 @@ export default function Home() {
             <div className="hero-showcase__main card">
               <div className="hero-showcase__header">
                 <span className="eyebrow">Produtos em destaque</span>
-                <p>Exemplos reais para o cliente entender melhor o que a Folia entrega.</p>
+                <p>As quatro categorias seguem como estrutura principal do catálogo, com uma oferta consultiva separada para pacotes sob medida.</p>
               </div>
               <div className="hero-showcase__grid">
                 {HERO_PRODUCTS.map((item) => (
@@ -164,7 +181,7 @@ export default function Home() {
                     <div className="showpiece__body">
                       <span className="showpiece__subtitle">{item.subtitle}</span>
                       <h3>{item.title}</h3>
-                      <span className="showpiece__link">Explorar categoria</span>
+                      <span className="showpiece__link">{item.cta}</span>
                     </div>
                   </Link>
                 ))}
@@ -172,9 +189,9 @@ export default function Home() {
             </div>
             <div className="hero-showcase__aside card">
               <span className="eyebrow">Mix de catálogo</span>
-              <strong>Personalizados, papelaria pronta e materiais para marca</strong>
+              <strong>Celebração, corporativo, papelaria e packaging, com pacotes sob medida quando fizer mais sentido combinar categorias.</strong>
               <p>
-                Em vez de blocos decorativos sem função, a home funciona como vitrine e leva o usuário para as categorias que realmente importam.
+                A home continua funcionando como vitrine de categorias, mas também abre espaço para pedidos consultivos quando o cliente precisa de uma composição personalizada.
               </p>
             </div>
           </div>

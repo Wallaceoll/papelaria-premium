@@ -108,6 +108,42 @@
   backdrop-filter: blur(12px);
 }
 
+.servicos-packages {
+  padding-top: 0;
+}
+
+.servicos-packages__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-8);
+  background: linear-gradient(135deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.72));
+  border: 1px solid var(--border-soft);
+}
+
+.servicos-packages__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.servicos-packages__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: rgba(253, 251, 248, 0.9);
+  border: 1px solid var(--border-soft);
+}
+
+.servicos-packages__actions p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
 .filter-bar {
   display: flex;
   gap: var(--space-3);
@@ -404,6 +440,7 @@
 
 @media (max-width: 1200px) {
   .servicos-hero__layout,
+  .servicos-packages__card,
   .diferenciais-grid {
     grid-template-columns: 1fr;
   }
@@ -423,6 +460,11 @@
   .servicos-grid,
   .diferenciais-grid {
     grid-template-columns: 1fr;
+  }
+
+  .servicos-packages__card,
+  .servicos-packages__actions {
+    padding: var(--space-5);
   }
 
   .hero-family-card {
