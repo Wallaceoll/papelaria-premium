@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import CatalogCarousel from '../components/CatalogCarousel';
 import { useReveal } from '../hooks/useReveal';
 import './Servicos.css';
 
@@ -11,29 +12,12 @@ const categories = [
   { id: 'packaging', label: 'Packaging' },
 ];
 
-const highlightFamilies = [
-  {
-    id: 'celebracao',
-    label: 'Personalizados',
-    title: 'Celebrar com presença visual',
-    text: 'Convites, menus, cartões e kits que começam o encanto antes mesmo do evento acontecer.',
-    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
-  },
-  {
-    id: 'papelaria',
-    label: 'Linha papelaria',
-    title: 'Papelaria para escola, mesa e rotina',
-    text: 'Produtos que funcionam bem na vitrine e continuam desejáveis no uso do dia a dia.',
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
-  },
-  {
-    id: 'corporativo',
-    label: 'Corporativo',
-    title: 'Marcas que querem tocar melhor',
-    text: 'Materiais institucionais, onboarding e impressos que elevam a percepção da empresa.',
-    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80',
-  },
-];
+const categoryStories = {
+  celebracao: 'Convites, menus, kits e papelaria de evento pensados para abrir a experiencia antes mesmo da data chegar.',
+  corporativo: 'Materiais institucionais, onboarding e impressos que elevam a percepcao da marca em cada contato.',
+  papelaria: 'Planners, blocos, desk sets e itens de rotina com apelo comercial forte e uso real no dia a dia.',
+  packaging: 'Caixas, etiquetas, cintas e detalhes de unboxing que transformam entrega em experiencia de marca.',
+};
 
 const products = [
   {
@@ -148,8 +132,6 @@ export default function Servicos() {
     : 'todos';
   const [active, setActive] = useState(initialCategory);
   const [expanded, setExpanded] = useState(null);
-  const [heroIndex, setHeroIndex] = useState(0);
-
   useEffect(() => {
     const current = searchParams.get('categoria');
     if (current && categories.some((item) => item.id === current)) {
@@ -181,15 +163,21 @@ export default function Servicos() {
     setSearchParams({ categoria: categoryId });
   };
 
-  const activeHighlight = highlightFamilies[heroIndex];
+  const carouselItems = useMemo(() => (
+    categories
+      .filter((category) => category.id !== 'todos')
+      .map((category) => {
+        const relatedProducts = products.filter((product) => product.cat === category.id);
+        const coverProduct = relatedProducts[0];
 
-  const showPreviousHighlight = () => {
-    setHeroIndex((current) => (current - 1 + highlightFamilies.length) % highlightFamilies.length);
-  };
-
-  const showNextHighlight = () => {
-    setHeroIndex((current) => (current + 1) % highlightFamilies.length);
-  };
+        return {
+          id: category.id,
+          name: category.label,
+          description: categoryStories[category.id],
+          image: coverProduct?.image,
+        };
+      })
+  ), []);
 
   return (
     <div className="servicos">
@@ -213,44 +201,7 @@ export default function Servicos() {
               <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
             </div>
 
-            <div className="hero-slide">
-              <span className="hero-slide__label">{activeHighlight.label}</span>
-
-              <div className="hero-slide__visual">
-                <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
-                </button>
-                <img src={activeHighlight.image} alt={activeHighlight.title} loading="lazy" />
-                <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
-                </button>
-              </div>
-
-              <div className="hero-slide__content">
-                <h2>{activeHighlight.title}</h2>
-                <p>{activeHighlight.text}</p>
-                <button
-                  type="button"
-                  className="hero-family-card__cta"
-                  onClick={() => selectCategory(activeHighlight.id)}
-                >
-                  Ver categoria
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
-                </button>
-              </div>
-
-              <div className="servicos-hero__dots">
-                {highlightFamilies.map((item, index) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
-                    onClick={() => setHeroIndex(index)}
-                    aria-label={`Mostrar ${item.label}`}
-                  />
-                ))}
-              </div>
-            </div>
+            <CatalogCarousel items={carouselItems} onSelect={selectCategory} />
           </div>
         </div>
       </section>

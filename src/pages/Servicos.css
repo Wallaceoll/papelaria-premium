@@ -225,7 +225,7 @@
   border-radius: var(--radius-lg);
 .servicos-hero__layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: var(--space-10);
   align-items: center;
 }
@@ -245,7 +245,8 @@
   background: rgba(253, 251, 248, 0.82);
   backdrop-filter: blur(14px);
   align-self: center;
-  width: min(100%, 42rem);
+  width: 100%;
+  max-width: 100%;
   margin-left: auto;
 }
 
