@@ -150,7 +150,11 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+const isDev = process.env.NODE_ENV !== "production";
+const plugins = [react(), tailwindcss(), jsxLocPlugin()];
+if (isDev) {
+  plugins.push(vitePluginManusRuntime(), vitePluginManusDebugCollector());
+}
 
 export default defineConfig({
   plugins,
@@ -165,7 +169,6 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
     sourcemap: false,
-    minify: 'terser',
   },
   server: {
     port: 5173,
