@@ -14,18 +14,21 @@ const categories = [
 const highlightFamilies = [
   {
     id: 'celebracao',
+    label: 'Personalizados',
     title: 'Celebrar com presença visual',
     text: 'Convites, menus, cartões e kits que começam o encanto antes mesmo do evento acontecer.',
     image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 'papelaria',
+    label: 'Linha papelaria',
     title: 'Papelaria para escola, mesa e rotina',
     text: 'Produtos que funcionam bem na vitrine e continuam desejáveis no uso do dia a dia.',
     image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
   },
   {
     id: 'corporativo',
+    label: 'Corporativo',
     title: 'Marcas que querem tocar melhor',
     text: 'Materiais institucionais, onboarding e impressos que elevam a percepção da empresa.',
     image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80',
@@ -203,6 +206,7 @@ export default function Servicos() {
                 <img src={item.image} alt={item.title} loading="lazy" />
                 <div className="hero-family-card__overlay" />
                 <div className="hero-family-card__body">
+                  <span className="hero-family-card__subtitle">{item.label}</span>
                   <h2>{item.title}</h2>
                   <p>{item.text}</p>
                 </div>
