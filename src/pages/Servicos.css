@@ -120,12 +120,51 @@
   padding: var(--space-8);
   background: linear-gradient(135deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.72));
   border: 1px solid var(--border-soft);
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
+}
+
+.servicos-packages__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(201, 168, 76, 0.2);
 }
 
 .servicos-packages__content {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+.servicos-packages__header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: end;
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.servicos-packages__header p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  max-width: 28rem;
+}
+
+.servicos-packages__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.servicos-packages__tags span {
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(253, 251, 248, 0.8);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-xs);
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
 }
 
 .servicos-packages__actions {
@@ -137,6 +176,13 @@
   border-radius: var(--radius-lg);
   background: rgba(253, 251, 248, 0.9);
   border: 1px solid var(--border-soft);
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth);
+}
+
+.servicos-packages__card:hover .servicos-packages__actions {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: rgba(253, 251, 248, 0.96);
 }
 
 .servicos-packages__actions p {
@@ -188,6 +234,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
+  max-width: 44rem;
+  padding-right: var(--space-2);
 }
 
 .servicos-hero__board {
@@ -196,6 +244,9 @@
   padding: var(--space-6);
   background: rgba(253, 251, 248, 0.82);
   backdrop-filter: blur(14px);
+  align-self: center;
+  width: min(100%, 42rem);
+  margin-left: auto;
 }
 
 .servicos-hero__board-header {
@@ -515,6 +566,19 @@
   .servicos-packages__card,
   .diferenciais-grid {
     grid-template-columns: 1fr;
+  }
+
+  .servicos-hero__copy,
+  .servicos-hero__board {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    padding-right: 0;
+  }
+
+  .servicos-packages__header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .servicos-hero__board,

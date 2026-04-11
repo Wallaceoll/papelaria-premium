@@ -85,6 +85,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  max-width: 44rem;
+  padding-right: var(--space-2);
 }
 
 .hero__title {
@@ -490,6 +492,9 @@
 .hero-showcase {
   display: grid;
   gap: var(--space-5);
+  align-self: center;
+  width: min(100%, 42rem);
+  margin-left: auto;
 }
 
 .hero-showcase__main,
@@ -497,6 +502,11 @@
   padding: var(--space-6);
   background: rgba(253, 251, 248, 0.82);
   backdrop-filter: blur(14px);
+}
+
+.hero-showcase__main {
+  display: grid;
+  gap: var(--space-5);
 }
 
 .hero-showcase__header {
@@ -918,6 +928,14 @@
   .catalog-intro__grid,
   .visual-gallery__layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero__content,
+  .hero-showcase {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    padding-right: 0;
   }
 
   .catalog-intro__copy,

@@ -224,14 +224,24 @@ export default function Servicos() {
         <div className="container-wide">
           <div className="servicos-packages__card card reveal">
             <div className="servicos-packages__content">
-              <span className="eyebrow">Pacotes personalizados</span>
+              <div className="servicos-packages__header">
+                <span className="eyebrow">Pacotes personalizados</span>
+                <p>Uma proposta consultiva para quando o projeto pede combinacao entre categorias, nao apenas um item isolado.</p>
+              </div>
               <h2 className="display-2">Se a melhor solução estiver na combinação entre categorias, montamos um pacote sob medida.</h2>
               <p className="body-large">
                 Alguns pedidos funcionam melhor quando celebracao, papelaria, packaging e materiais de marca entram juntos na mesma proposta.
                 Nesses casos, a Folia organiza uma composicao personalizada de acordo com objetivo, verba e tipo de entrega.
               </p>
+              <div className="servicos-packages__tags" aria-label="Formatos de pacote personalizado">
+                <span>Kits completos</span>
+                <span>Eventos</span>
+                <span>Presentes institucionais</span>
+                <span>Lancamentos</span>
+              </div>
             </div>
             <div className="servicos-packages__actions">
+              <span className="eyebrow">Orçamento consultivo</span>
               <p>Ideal para kits completos, lancamentos, eventos, presentes institucionais e projetos que pedem uma leitura mais consultiva.</p>
               <Link to="/contato" className="btn btn-primary btn-lg">Pedir orçamento sob medida</Link>
             </div>
