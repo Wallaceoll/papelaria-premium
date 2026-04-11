@@ -207,52 +207,43 @@ export default function Servicos() {
           </div>
 
           <div className="servicos-hero__board reveal-right card">
-            <div className="servicos-hero__board-header">
-              <div className="servicos-hero__board-copy">
-                <span className="eyebrow">Categorias em destaque</span>
-                <h2>Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
-              </div>
-              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
-            </div>
             <div className="servicos-hero__carousel-controls" aria-label="Navegação das categorias em destaque">
               <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
-              <div className="servicos-hero__carousel-meta">
-                <span className="servicos-hero__active-label">{activeHighlight.label}</span>
-                <span className="servicos-hero__counter">{heroIndex + 1} / {highlightFamilies.length}</span>
-                <div className="servicos-hero__dots">
-                  {highlightFamilies.map((item, index) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
-                      onClick={() => setHeroIndex(index)}
-                      aria-label={`Mostrar ${item.label}`}
-                    />
-                  ))}
-                </div>
+              <div className="servicos-hero__dots">
+                {highlightFamilies.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
+                    onClick={() => setHeroIndex(index)}
+                    aria-label={`Mostrar ${item.label}`}
+                  />
+                ))}
               </div>
               <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
               </button>
             </div>
-            <button
-              type="button"
-              className="hero-family-card hero-family-card--active"
-              onClick={() => selectCategory(activeHighlight.id)}
-            >
+            <div className="hero-family-card">
               <img src={activeHighlight.image} alt={activeHighlight.title} loading="lazy" />
-              <div className="hero-family-card__overlay" />
               <div className="hero-family-card__body">
                 <span className="hero-family-card__subtitle">{activeHighlight.label}</span>
                 <div className="hero-family-card__content">
                   <h2>{activeHighlight.title}</h2>
                   <p>{activeHighlight.text}</p>
                 </div>
-                <span className="hero-family-card__hint">Abrir categoria no catálogo</span>
+                <button
+                  type="button"
+                  className="hero-family-card__cta"
+                  onClick={() => selectCategory(activeHighlight.id)}
+                >
+                  Ver categoria
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+                </button>
               </div>
-            </button>
+            </div>
           </div>
         </div>
       </section>
