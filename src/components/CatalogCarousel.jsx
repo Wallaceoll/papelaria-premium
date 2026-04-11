@@ -85,8 +85,8 @@ export default function CatalogCarousel({ items, onSelect }) {
     <div
       className="catalog-carousel"
       style={{
-        '--items-per-view': visibleCount,
         '--current-index': currentIndex,
+        '--item-count': items.length,
       }}
     >
       <div className="catalog-carousel__viewport-wrap">
