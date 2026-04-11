@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
             <div className="footer__social">
               {['Instagram', 'Pinterest', 'Behance', 'LinkedIn'].map(s => (
-                <a key={s} href="#" className="footer__social-link">{s}</a>
+                <a key={s} href={`https://${s.toLowerCase()}.com`} target="_blank" rel="noopener noreferrer" className="footer__social-link">{s}</a>
               ))}
             </div>
           </div>
@@ -36,7 +36,7 @@ export default function Footer() {
               <p className="footer__col-title">Produtos</p>
               <ul>
                 {['Convites de Casamento', 'Papelaria de Bebê', 'Kits Corporativos', 'Brindes Premium', 'Cartas & Envelopes', 'Packaging Personalizado'].map(s => (
-                  <li key={s}><a href="#" className="footer__link">{s}</a></li>
+                  <li key={s}><Link to="/servicos" className="footer__link">{s}</Link></li>
                 ))}
               </ul>
             </div>
@@ -56,8 +56,8 @@ export default function Footer() {
         <div className="footer__bottom">
           <p>© {year} Folia Papelaria. Todos os direitos reservados.</p>
           <div className="footer__legal">
-            <a href="#" className="footer__link">Privacidade</a>
-            <a href="#" className="footer__link">Termos</a>
+            <Link to="/" className="footer__link">Privacidade</Link>
+            <Link to="/" className="footer__link">Termos</Link>
           </div>
         </div>
       </div>
