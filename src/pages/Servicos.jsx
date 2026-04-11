@@ -216,23 +216,25 @@ export default function Servicos() {
             </div>
             <div className="servicos-hero__carousel-controls" aria-label="Navegação das categorias em destaque">
               <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
-                <span aria-hidden>←</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
               <div className="servicos-hero__carousel-meta">
-                {highlightFamilies.map((item, index) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
-                    onClick={() => setHeroIndex(index)}
-                    aria-label={`Mostrar ${item.label}`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                <span className="servicos-hero__active-label">{activeHighlight.label}</span>
+                <span className="servicos-hero__counter">{heroIndex + 1} / {highlightFamilies.length}</span>
+                <div className="servicos-hero__dots">
+                  {highlightFamilies.map((item, index) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
+                      onClick={() => setHeroIndex(index)}
+                      aria-label={`Mostrar ${item.label}`}
+                    />
+                  ))}
+                </div>
               </div>
               <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
-                <span aria-hidden>→</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
               </button>
             </div>
             <button
