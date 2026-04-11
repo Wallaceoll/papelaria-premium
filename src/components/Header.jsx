@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const nav = [
@@ -13,6 +13,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -30,10 +31,30 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const handleNavClick = (path) => {
+    setMenuOpen(false);
+
+    if (pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    navigate(path);
+  };
+
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
       <div className="header__inner container-wide">
-        <Link to="/" className="header__logo">
+        <Link
+          to="/"
+          className="header__logo"
+          onClick={(event) => {
+            if (pathname === '/') {
+              event.preventDefault();
+              handleNavClick('/');
+            }
+          }}
+        >
           <span className="header__logo-mark">F</span>
           <span className="header__logo-text">Folia</span>
         </Link>
@@ -44,6 +65,12 @@ export default function Header() {
               key={item.path}
               to={item.path}
               className={`header__link ${pathname === item.path ? 'active' : ''}`}
+              onClick={(event) => {
+                if (pathname === item.path) {
+                  event.preventDefault();
+                }
+                handleNavClick(item.path);
+              }}
             >
               {item.label}
             </Link>
@@ -73,6 +100,12 @@ export default function Header() {
               to={item.path}
               className={`header__mobile-link ${pathname === item.path ? 'active' : ''}`}
               style={{ transitionDelay: `${i * 60}ms` }}
+              onClick={(event) => {
+                if (pathname === item.path) {
+                  event.preventDefault();
+                }
+                handleNavClick(item.path);
+              }}
             >
               <span className="header__mobile-num">0{i + 1}</span>
               {item.label}
