@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 import './Servicos.css';
 
@@ -137,6 +137,8 @@ const products = [
 
 export default function Servicos() {
   useReveal();
+  const location = useLocation();
+  const catalogRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = categories.some((item) => item.id === searchParams.get('categoria'))
     ? searchParams.get('categoria')
@@ -152,6 +154,15 @@ export default function Servicos() {
     }
     setActive('todos');
   }, [searchParams]);
+
+  useEffect(() => {
+    if (location.hash !== '#catalogo' || !catalogRef.current) {
+      return;
+    }
+
+    const top = catalogRef.current.getBoundingClientRect().top + window.scrollY - 140;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+  }, [location.hash, searchParams]);
 
   const filtered = useMemo(() => (
     active === 'todos' ? products : products.filter((product) => product.cat === active)
@@ -194,7 +205,6 @@ export default function Servicos() {
                 <div className="hero-family-card__body">
                   <h2>{item.title}</h2>
                   <p>{item.text}</p>
-                  <span>Filtrar esta categoria</span>
                 </div>
               </button>
             ))}
@@ -219,7 +229,7 @@ export default function Servicos() {
         </div>
       </section>
 
-      <section className="section servicos-grid-section">
+      <section className="section servicos-grid-section" id="catalogo" ref={catalogRef}>
         <div className="container-wide">
           <div className="servicos-grid">
             {filtered.map((product, index) => (
