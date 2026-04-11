@@ -1,0 +1,252 @@
+{
+  "project_info": {
+    "title": "Papelaria Premium",
+    "created": 1775919264.678205,
+    "last_updated": 1775919282.6704104,
+    "total_slides": 20
+  },
+  "slides": [
+    {
+      "id": "slide_01_capa",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "slide_02_problema",
+      "state": "edit_pending",
+      "pageNum": 2
+    },
+    {
+      "id": "slide_03_solucao",
+      "state": "edit_pending",
+      "pageNum": 3
+    },
+    {
+      "id": "slide_04_arquitetura",
+      "state": "edit_pending",
+      "pageNum": 4
+    },
+    {
+      "id": "slide_05_design_system",
+      "state": "edit_pending",
+      "pageNum": 5
+    },
+    {
+      "id": "slide_06_hero",
+      "state": "edit_pending",
+      "pageNum": 6
+    },
+    {
+      "id": "slide_07_servicos",
+      "state": "edit_pending",
+      "pageNum": 7
+    },
+    {
+      "id": "slide_08_portfolio",
+      "state": "edit_pending",
+      "pageNum": 8
+    },
+    {
+      "id": "slide_09_depoimentos",
+      "state": "edit_pending",
+      "pageNum": 9
+    },
+    {
+      "id": "slide_10_interatividade",
+      "state": "edit_pending",
+      "pageNum": 10
+    },
+    {
+      "id": "slide_11_responsividade",
+      "state": "edit_pending",
+      "pageNum": 11
+    },
+    {
+      "id": "slide_12_tecnologia",
+      "state": "edit_pending",
+      "pageNum": 12
+    },
+    {
+      "id": "slide_13_modais",
+      "state": "edit_pending",
+      "pageNum": 13
+    },
+    {
+      "id": "slide_14_marketing",
+      "state": "edit_pending",
+      "pageNum": 14
+    },
+    {
+      "id": "slide_15_metricas",
+      "state": "edit_pending",
+      "pageNum": 15
+    },
+    {
+      "id": "slide_16_timeline",
+      "state": "edit_pending",
+      "pageNum": 16
+    },
+    {
+      "id": "slide_17_diferenciais",
+      "state": "edit_pending",
+      "pageNum": 17
+    },
+    {
+      "id": "slide_18_proximos_passos",
+      "state": "edit_pending",
+      "pageNum": 18
+    },
+    {
+      "id": "slide_19_contato",
+      "state": "edit_pending",
+      "pageNum": 19
+    },
+    {
+      "id": "slide_20_encerramento",
+      "state": "edit_pending",
+      "pageNum": 20
+    }
+  ],
+  "outline": [
+    {
+      "id": "slide_01_capa",
+      "title": "Papelaria Premium",
+      "summary": "Apresentação do novo site institucional com proposta de valor: Design Editorial Sofisticado para Marcas que Exigem Presença.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_02_problema",
+      "title": "O Desafio do Mercado",
+      "summary": "Identificação dos problemas que o mercado de papelaria corporativa enfrenta: negligência visual, falta de especialização e acabamento genérico.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_03_solucao",
+      "title": "Nossa Solução",
+      "summary": "Apresentação da proposta de valor: design editorial premium, acabamento sofisticado e parceria estratégica para marcas exigentes.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_04_arquitetura",
+      "title": "Arquitetura do Site",
+      "summary": "Estrutura completa do site com Hero, Serviços, Portfólio, Depoimentos, CTA e Contato.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_05_design_system",
+      "title": "Design System Premium",
+      "summary": "Identidade visual sofisticada: paleta Editorial Noir Technologique, tipografia Bodoni Moda + Manrope, glassmorphism e animações imersivas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_06_hero",
+      "title": "Seção Hero",
+      "summary": "Apresentação impactante com título dramático, card interativo, métricas de credibilidade e CTAs duplas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_07_servicos",
+      "title": "Serviços Especializados",
+      "summary": "6 soluções principais: Papelaria Corporativa, Convites, Embalagens, Identidade Visual, Catálogos e Acabamentos.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_08_portfolio",
+      "title": "Portfólio Interativo",
+      "summary": "Carrossel com navegação intuitiva, grid de 6 projetos com overlay e modal de detalhes para cada projeto.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_09_depoimentos",
+      "title": "Validação Social",
+      "summary": "3 depoimentos de clientes com 5 estrelas, nome, cargo e empresa como prova de confiabilidade.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_10_interatividade",
+      "title": "Experiência Imersiva",
+      "summary": "Reveal on scroll, cursor personalizado, background dinâmico, modais funcionais e carrossel intuitivo.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_11_responsividade",
+      "title": "Responsividade",
+      "summary": "Design mobile-first otimizado para desktop, tablet e mobile com performance alta.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_12_tecnologia",
+      "title": "Stack Técnico",
+      "summary": "React 18 + TypeScript, React Router v6, CSS modular, animações nativas, deploy no Vercel.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_13_modais",
+      "title": "Conversão Otimizada",
+      "summary": "Modais de contato e projeto com formulários validados, feedback visual e redirecionamentos apropriados.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_14_marketing",
+      "title": "Estratégia de Lançamento",
+      "summary": "SEO, Paid Ads (Google + Meta + LinkedIn), conteúdo, parcerias com influenciadores e eventos.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_15_metricas",
+      "title": "KPIs de Sucesso",
+      "summary": "5.000 visitantes/mês, 50+ leads, 8-12% conversão, Top 5 SEO, ROI ads > 3:1.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_16_timeline",
+      "title": "Cronograma",
+      "summary": "Semana 1-2 preparação, semana 3 lançamento soft, semana 4 lançamento oficial, mês 2-3 consolidação.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_17_diferenciais",
+      "title": "Diferenciais",
+      "summary": "Design editorial excelente, acabamento premium, atendimento personalizado, processo transparente, suporte contínuo.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_18_proximos_passos",
+      "title": "Próximos Passos",
+      "summary": "Lançamento do site, ativação de campanhas, outreach com influenciadores, monitoramento e otimizações contínuas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_19_contato",
+      "title": "Contato",
+      "summary": "Email, telefone, website, Instagram e LinkedIn com QR code para o site.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_20_encerramento",
+      "title": "Transformando Papelaria em Arte",
+      "summary": "Encerramento com imagem impactante e CTA final: Solicite sua proposta hoje.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

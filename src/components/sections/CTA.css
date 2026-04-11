@@ -1,0 +1,112 @@
+.cta {
+  position: relative;
+  padding-top: clamp(8rem, 12vw, 13rem);
+  padding-bottom: clamp(8rem, 12vw, 13rem);
+  background: linear-gradient(180deg, rgba(11, 13, 18, 0.28), rgba(11, 13, 18, 0.48));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.8rem;
+  margin-bottom: clamp(6rem, 10vw, 10rem);
+}
+
+.cta__title {
+  max-width: 28rem;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+
+.cta__description {
+  max-width: 42rem;
+  color: rgba(245, 241, 234, 0.7);
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  line-height: 1.85;
+}
+
+.cta__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.9rem;
+}
+
+.cta__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.feature {
+  padding: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198, 168, 106, 0.26);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.feature__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(198, 168, 106, 0.24), rgba(198, 168, 106, 0.12));
+  border: 1px solid rgba(198, 168, 106, 0.26);
+  color: #c6a86a;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.feature h3 {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f5f1ea;
+}
+
+.feature p {
+  color: rgba(245, 241, 234, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .cta__title {
+    font-size: clamp(2rem, 12vw, 3.2rem);
+  }
+
+  .cta__actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+  }
+
+  .cta__features {
+    grid-template-columns: 1fr;
+  }
+}
