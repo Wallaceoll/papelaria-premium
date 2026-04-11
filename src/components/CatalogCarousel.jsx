@@ -48,6 +48,7 @@ function CarouselItem({ item, onSelect }) {
 
 export default function CatalogCarousel({ items, onSelect }) {
   const viewportRef = useRef(null);
+  const touchStartXRef = useRef(0);
   const [visibleCount, setVisibleCount] = useState(3);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -79,70 +80,72 @@ export default function CatalogCarousel({ items, onSelect }) {
   }, [maxIndex]);
 
   const dotCount = useMemo(() => Math.max(items.length - visibleCount + 1, 1), [items.length, visibleCount]);
-
-  const scrollToIndex = (index) => {
-    const viewport = viewportRef.current;
-    if (!viewport) {
-      return;
+  const highlightedIndex = useMemo(() => {
+    if (visibleCount >= 3) {
+      return Math.min(currentIndex + 1, items.length - 1);
     }
 
+    return currentIndex;
+  }, [currentIndex, items.length, visibleCount]);
+
+  const goToIndex = (index) => {
     const nextIndex = Math.max(0, Math.min(index, maxIndex));
-    const nextCard = viewport.querySelector(`[data-carousel-index="${nextIndex}"]`);
-    if (!nextCard) {
-      return;
-    }
-
-    viewport.scrollTo({
-      left: nextCard.offsetLeft,
-      behavior: 'smooth',
-    });
     setCurrentIndex(nextIndex);
   };
 
-  const handleScroll = () => {
-    const viewport = viewportRef.current;
-    if (!viewport) {
+  const handleTouchStart = (event) => {
+    touchStartXRef.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event) => {
+    const deltaX = event.changedTouches[0].clientX - touchStartXRef.current;
+
+    if (Math.abs(deltaX) < 48) {
       return;
     }
 
-    const cards = Array.from(viewport.querySelectorAll('[data-carousel-index]'));
-    if (!cards.length) {
+    if (deltaX < 0) {
+      goToIndex(currentIndex + 1);
       return;
     }
 
-    const nearest = cards.reduce((best, card) => {
-      const distance = Math.abs(card.offsetLeft - viewport.scrollLeft);
-      return distance < best.distance
-        ? { index: Number(card.getAttribute('data-carousel-index')), distance }
-        : best;
-    }, { index: 0, distance: Number.POSITIVE_INFINITY });
-
-    setCurrentIndex(Math.min(nearest.index, maxIndex));
+    goToIndex(currentIndex - 1);
   };
 
   const canGoPrevious = currentIndex > 0;
   const canGoNext = currentIndex < maxIndex;
 
   return (
-    <div className="catalog-carousel" style={{ '--items-per-view': visibleCount }}>
+    <div
+      className="catalog-carousel"
+      style={{
+        '--items-per-view': visibleCount,
+        '--current-index': currentIndex,
+      }}
+    >
       <div className="catalog-carousel__viewport-wrap">
-        <ArrowButton direction="left" disabled={!canGoPrevious} onClick={() => scrollToIndex(currentIndex - 1)} />
+        <ArrowButton direction="left" disabled={!canGoPrevious} onClick={() => goToIndex(currentIndex - 1)} />
         <div
           ref={viewportRef}
           className="catalog-carousel__viewport"
-          onScroll={handleScroll}
           role="region"
           aria-label="Carrossel de categorias do catalogo"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="catalog-carousel__track">
             {items.map((item, index) => (
-              <div key={item.id} className="catalog-carousel__slide" data-carousel-index={index}>
+              <div
+                key={item.id}
+                className={`catalog-carousel__slide ${index === highlightedIndex ? 'is-active' : ''}`}
+                data-carousel-index={index}
+              >
                 <CarouselItem item={item} onSelect={onSelect} />
               </div>
             ))}
           </div>
         </div>
-        <ArrowButton direction="right" disabled={!canGoNext} onClick={() => scrollToIndex(currentIndex + 1)} />
+        <ArrowButton direction="right" disabled={!canGoNext} onClick={() => goToIndex(currentIndex + 1)} />
       </div>
 
       <div className="catalog-carousel__dots" aria-label="Posicao do carrossel">
@@ -151,7 +154,7 @@ export default function CatalogCarousel({ items, onSelect }) {
             key={`dot-${index}`}
             type="button"
             className={`catalog-carousel__dot ${currentIndex === index ? 'is-active' : ''}`}
-            onClick={() => scrollToIndex(index)}
+            onClick={() => goToIndex(index)}
             aria-label={`Ir para grupo ${index + 1}`}
           />
         ))}

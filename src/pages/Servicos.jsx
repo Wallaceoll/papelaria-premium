@@ -154,13 +154,24 @@ export default function Servicos() {
     active === 'todos' ? products : products.filter((product) => product.cat === active)
   ), [active]);
 
+  const scrollToCatalog = () => {
+    if (!catalogRef.current) {
+      return;
+    }
+
+    const top = catalogRef.current.getBoundingClientRect().top + window.scrollY - 140;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+  };
+
   const selectCategory = (categoryId) => {
     setExpanded(null);
     if (categoryId === 'todos') {
       setSearchParams({});
+      scrollToCatalog();
       return;
     }
     setSearchParams({ categoria: categoryId });
+    scrollToCatalog();
   };
 
   const carouselItems = useMemo(() => (
