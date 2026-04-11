@@ -195,7 +195,11 @@ export default function Servicos() {
             </p>
           </div>
 
-          <div className="servicos-hero__board reveal-right">
+          <div className="servicos-hero__board reveal-right card">
+            <div className="servicos-hero__board-header">
+              <span className="eyebrow">Categorias em destaque</span>
+              <p>As principais frentes do catálogo aparecem aqui com a mesma leitura editorial aplicada na home.</p>
+            </div>
             {highlightFamilies.map((item, index) => (
               <button
                 key={item.id}

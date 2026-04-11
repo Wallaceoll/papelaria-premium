@@ -193,6 +193,26 @@
 .servicos-hero__board {
   display: grid;
   gap: var(--space-4);
+  padding: var(--space-6);
+  background: rgba(253, 251, 248, 0.82);
+  backdrop-filter: blur(14px);
+}
+
+.servicos-hero__board-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: end;
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: var(--space-1);
+}
+
+.servicos-hero__board-header p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  max-width: 26rem;
 }
 
 .hero-family-card {
@@ -512,6 +532,11 @@
   .servicos-grid,
   .diferenciais-grid {
     grid-template-columns: 1fr;
+  }
+
+  .servicos-hero__board-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .servicos-packages__card,
