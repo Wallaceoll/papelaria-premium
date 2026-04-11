@@ -22,10 +22,10 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, setIsMobileMenuOpen }
 
           <nav className="site-nav" aria-label="Navegação principal">
             <div className={`site-nav__links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+              <Link to="/sobre">Sobre</Link>
               <Link to="/servicos">Serviços</Link>
               <Link to="/portfolio">Portfólio</Link>
-              <a href="#depoimentos">Depoimentos</a>
-              <a href="#contato">Contato</a>
+              <Link to="/contato">Contato</Link>
             </div>
             <Link to="/contato" className="site-nav__cta">Solicitar proposta</Link>
           </nav>
