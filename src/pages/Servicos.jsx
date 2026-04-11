@@ -148,6 +148,7 @@ export default function Servicos() {
     : 'todos';
   const [active, setActive] = useState(initialCategory);
   const [expanded, setExpanded] = useState(null);
+  const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
     const current = searchParams.get('categoria');
@@ -180,6 +181,16 @@ export default function Servicos() {
     setSearchParams({ categoria: categoryId });
   };
 
+  const activeHighlight = highlightFamilies[heroIndex];
+
+  const showPreviousHighlight = () => {
+    setHeroIndex((current) => (current - 1 + highlightFamilies.length) % highlightFamilies.length);
+  };
+
+  const showNextHighlight = () => {
+    setHeroIndex((current) => (current + 1) % highlightFamilies.length);
+  };
+
   return (
     <div className="servicos">
       <section className="servicos-hero mesh-bg noise">
@@ -203,25 +214,43 @@ export default function Servicos() {
               </div>
               <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
             </div>
-            {highlightFamilies.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                className={`hero-family-card hero-family-card--${index + 1}`}
-                onClick={() => selectCategory(item.id)}
-              >
-                <img src={item.image} alt={item.title} loading="lazy" />
-                <div className="hero-family-card__overlay" />
-                <div className="hero-family-card__body">
-                  <span className="hero-family-card__subtitle">{item.label}</span>
-                  <div className="hero-family-card__content">
-                    <h2>{item.title}</h2>
-                    <p>{item.text}</p>
-                  </div>
-                  <span className="hero-family-card__hint">Abrir categoria no catálogo</span>
-                </div>
+            <div className="servicos-hero__carousel-controls" aria-label="Navegação das categorias em destaque">
+              <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
+                <span aria-hidden>←</span>
               </button>
-            ))}
+              <div className="servicos-hero__carousel-meta">
+                {highlightFamilies.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`servicos-hero__dot ${heroIndex === index ? 'active' : ''}`}
+                    onClick={() => setHeroIndex(index)}
+                    aria-label={`Mostrar ${item.label}`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
+                <span aria-hidden>→</span>
+              </button>
+            </div>
+            <button
+              type="button"
+              className="hero-family-card hero-family-card--active"
+              onClick={() => selectCategory(activeHighlight.id)}
+            >
+              <img src={activeHighlight.image} alt={activeHighlight.title} loading="lazy" />
+              <div className="hero-family-card__overlay" />
+              <div className="hero-family-card__body">
+                <span className="hero-family-card__subtitle">{activeHighlight.label}</span>
+                <div className="hero-family-card__content">
+                  <h2>{activeHighlight.title}</h2>
+                  <p>{activeHighlight.text}</p>
+                </div>
+                <span className="hero-family-card__hint">Abrir categoria no catálogo</span>
+              </div>
+            </button>
           </div>
         </div>
       </section>

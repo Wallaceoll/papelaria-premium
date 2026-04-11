@@ -282,6 +282,66 @@
   max-width: 25rem;
 }
 
+.servicos-hero__carousel-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.servicos-hero__carousel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.servicos-hero__arrow {
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(253, 251, 248, 0.96);
+  color: var(--ink);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
+}
+
+.servicos-hero__arrow:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(201, 168, 76, 0.24);
+}
+
+.servicos-hero__arrow span {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.servicos-hero__dot {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(253, 251, 248, 0.75);
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth), transform var(--dur-base) var(--ease-smooth);
+}
+
+.servicos-hero__dot:hover,
+.servicos-hero__dot.active {
+  color: var(--gold-dark);
+  border-color: rgba(201, 168, 76, 0.24);
+  background: rgba(201, 168, 76, 0.1);
+}
+
+.servicos-hero__dot.active {
+  transform: translateY(-1px);
+}
+
 .hero-family-card {
   display: grid;
   grid-template-columns: 7.25rem 1fr;
@@ -587,6 +647,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .servicos-hero__carousel-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .servicos-hero__carousel-meta {
+    justify-content: flex-start;
+  }
+
   .hero-family-card {
     grid-template-columns: 9rem 1fr;
   }
@@ -602,6 +670,10 @@
   .servicos-hero__board-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .servicos-hero__carousel-meta {
+    gap: 0.45rem;
   }
 
   .servicos-packages__card,
