@@ -197,8 +197,11 @@ export default function Servicos() {
 
           <div className="servicos-hero__board reveal-right card">
             <div className="servicos-hero__board-header">
-              <span className="eyebrow">Categorias em destaque</span>
-              <p>As principais frentes do catálogo aparecem aqui com a mesma leitura editorial aplicada na home.</p>
+              <div className="servicos-hero__board-copy">
+                <span className="eyebrow">Categorias em destaque</span>
+                <h2>Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
+              </div>
+              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
             </div>
             {highlightFamilies.map((item, index) => (
               <button
@@ -211,8 +214,11 @@ export default function Servicos() {
                 <div className="hero-family-card__overlay" />
                 <div className="hero-family-card__body">
                   <span className="hero-family-card__subtitle">{item.label}</span>
-                  <h2>{item.title}</h2>
-                  <p>{item.text}</p>
+                  <div className="hero-family-card__content">
+                    <h2>{item.title}</h2>
+                    <p>{item.text}</p>
+                  </div>
+                  <span className="hero-family-card__hint">Abrir categoria no catálogo</span>
                 </div>
               </button>
             ))}
