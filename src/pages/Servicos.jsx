@@ -207,10 +207,38 @@ export default function Servicos() {
           </div>
 
           <div className="servicos-hero__board reveal-right card">
-            <div className="servicos-hero__carousel-controls" aria-label="Navegação das categorias em destaque">
-              <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
-              </button>
+            <div className="servicos-hero__board-header">
+              <span className="eyebrow">Categorias em destaque</span>
+              <h2>Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
+              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
+            </div>
+
+            <div className="hero-slide">
+              <span className="hero-slide__label">{activeHighlight.label}</span>
+
+              <div className="hero-slide__visual">
+                <button type="button" className="servicos-hero__arrow" onClick={showPreviousHighlight} aria-label="Categoria anterior">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+                </button>
+                <img src={activeHighlight.image} alt={activeHighlight.title} loading="lazy" />
+                <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+                </button>
+              </div>
+
+              <div className="hero-slide__content">
+                <h2>{activeHighlight.title}</h2>
+                <p>{activeHighlight.text}</p>
+                <button
+                  type="button"
+                  className="hero-family-card__cta"
+                  onClick={() => selectCategory(activeHighlight.id)}
+                >
+                  Ver categoria
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+                </button>
+              </div>
+
               <div className="servicos-hero__dots">
                 {highlightFamilies.map((item, index) => (
                   <button
@@ -221,27 +249,6 @@ export default function Servicos() {
                     aria-label={`Mostrar ${item.label}`}
                   />
                 ))}
-              </div>
-              <button type="button" className="servicos-hero__arrow" onClick={showNextHighlight} aria-label="Próxima categoria">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
-              </button>
-            </div>
-            <div className="hero-family-card">
-              <img src={activeHighlight.image} alt={activeHighlight.title} loading="lazy" />
-              <div className="hero-family-card__body">
-                <span className="hero-family-card__subtitle">{activeHighlight.label}</span>
-                <div className="hero-family-card__content">
-                  <h2>{activeHighlight.title}</h2>
-                  <p>{activeHighlight.text}</p>
-                </div>
-                <button
-                  type="button"
-                  className="hero-family-card__cta"
-                  onClick={() => selectCategory(activeHighlight.id)}
-                >
-                  Ver categoria
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
-                </button>
               </div>
             </div>
           </div>
