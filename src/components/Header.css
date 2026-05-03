@@ -35,7 +35,7 @@
 .header__logo-mark {
   width: 36px; height: 36px;
   background: var(--ink);
-  color: var(--warm-white);
+  color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@
 .header__link {
   font-size: var(--text-sm);
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-decoration: none;
   position: relative;
   padding-bottom: 2px;

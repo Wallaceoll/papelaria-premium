@@ -112,13 +112,13 @@
 
     --text-primary:   #FDFBF8;
     --text-secondary: #E8E3DC;
-    --text-muted:     rgba(253,251,248,0.55);
-    --text-faint:     rgba(253,251,248,0.3);
+    --text-muted:     rgba(253,251,248,0.75);
+    --text-faint:     rgba(253,251,248,0.45);
 
     --ink:       #FDFBF8;
     --ink-soft:  #E8E3DC;
-    --ink-muted: rgba(253,251,248,0.55);
-    --ink-light: rgba(253,251,248,0.3);
+    --ink-muted: rgba(253,251,248,0.75);
+    --ink-light: rgba(253,251,248,0.45);
 
     --warm-white: #FDFBF8;
     --cream:      #1A1714;
