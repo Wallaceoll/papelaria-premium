@@ -145,24 +145,26 @@
 .catalog-carousel__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-top: auto;
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1.4rem;
+  width: fit-content;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(26, 23, 20, 0.12);
-  background: rgba(255, 252, 247, 0.88);
-  color: var(--ink);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth), color var(--dur-base) var(--ease-smooth);
+  border: 1px solid rgba(26, 23, 20, 0.15);
+  background: #FDFBF8;
+  color: #1A1714 !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: all var(--dur-base) var(--ease-smooth);
 }
 
 .catalog-carousel__cta:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-  border-color: rgba(201, 168, 76, 0.28);
   background: var(--ink);
-  color: var(--warm-white);
+  color: var(--bg) !important;
+  border-color: var(--ink);
 }
 
 .catalog-carousel__cta svg {
@@ -264,8 +266,11 @@
   }
 
   .catalog-carousel__cta {
-    padding: 0.6rem 0.9rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
     gap: 0.3rem;
+    width: fit-content;
+    align-self: flex-start;
+    margin-top: auto;
   }
 }
