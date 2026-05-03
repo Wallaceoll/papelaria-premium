@@ -47,17 +47,21 @@ const STEPS = [
 ];
 
 const MATERIALS = [
-  { name: 'Cotton 300g', desc: 'Textura suave e macia. Ideal para convites de casamento e eventos sofisticados.', color: '#F5F0E8' },
-  { name: 'Linho 240g', desc: 'Textura natural com padrão de trama. Rústico e elegante, muito usado em casamentos no campo.', color: '#EDE8DC' },
-  { name: 'Perolado 250g', desc: 'Brilho discreto e sofisticado. Perfeito para eventos noturnos e festas formais.', color: '#F2EEF5' },
-  { name: 'Kraft 300g', desc: 'Visual orgânico e sustentável. Tendência em eventos boho e rústicos.', color: '#D4C4A8' },
+  { name: 'Cotton 300g', desc: 'Textura suave e macia. Ideal para convites de casamento e eventos sofisticados.', color: '#F5F0E8', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Linho 240g', desc: 'Textura natural com padrão de trama. Rústico e elegante, muito usado em casamentos no campo.', color: '#EDE8DC', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Perolado 250g', desc: 'Brilho discreto e sofisticado. Perfeito para eventos noturnos e festas formais.', color: '#F2EEF5', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Kraft 300g', desc: 'Visual orgânico e sustentável. Tendência em eventos boho, rústicos e ambientalmente conscientes.', color: '#D4C4A8', image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Couchê Matte 350g', desc: 'Base neutra e premium para impressões de alta saturação de cores. Versátil e elegante.', color: '#F0EDE8', image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Color Plus 180g', desc: 'Disponível em +40 cores. Ideal para projetos coloridos ou infantis.', color: '#E8D5C4', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80' },
 ];
 
 const FINISHES = [
-  { name: 'Foil Dourado', icon: '✦' },
-  { name: 'Foil Prata', icon: '◈' },
-  { name: 'Relevo Seco', icon: '◎' },
-  { name: 'Corte a Laser', icon: '◍' },
+  { name: 'Foil Dourado', icon: '✦', desc: 'Película metálica prensada a quente. O acabamento mais desejado em papelaria premium.', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Foil Prata', icon: '◈', desc: 'Elegância moderna e contemporânea. Ótimo para paletas frias.', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Relevo Seco', icon: '◎', desc: 'Textura tátil sem tinta. Cria profundidade e sofisticação ao toque.', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Corte a Laser', icon: '◍', desc: 'Recortes precisos com formas complexas. Transforma o convite em obra de arte.', image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Verniz UV', icon: '◇', desc: 'Brilho localizado em áreas específicas.', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' },
+  { name: 'Letterpress', icon: '◉', desc: 'Impressão tipográfica com pressão. Artesanal e atemporal.', image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80' },
 ];
 
 function Simulator() {
@@ -87,60 +91,34 @@ function Simulator() {
       <div className="sim-controls">
         <div className="sim-intro">
           <h3 className="heading-1">Escolha materiais e entenda combinações</h3>
-          <p className="body-base">
-            Explore as possibilidades. Para seguir, você pode abrir o catálogo ou partir direto para o orçamento.
-          </p>
+          <p className="body-base">Explore as possibilidades para o seu projeto.</p>
         </div>
-        
         <div className="sim-group">
           <label className="sim-label eyebrow">Tipo de papel</label>
           <div className="sim-options">
-            {MATERIALS.map((m, i) => (
-              <button
-                key={m.name}
-                type="button"
-                className={`sim-option ${sel.material === i ? 'active' : ''}`}
-                onClick={() => setSel(s => ({ ...s, material: i }))}
-              >
-                <span className="sim-swatch" style={{ background: m.color }} />
-                {m.name}
+            {MATERIALS.slice(0, 4).map((m, i) => (
+              <button key={m.name} type="button" className={`sim-option ${sel.material === i ? 'active' : ''}`} onClick={() => setSel(s => ({ ...s, material: i }))}>
+                <span className="sim-swatch" style={{ background: m.color }} /> {m.name}
               </button>
             ))}
           </div>
         </div>
-
         <div className="sim-group">
-          <label className="sim-label eyebrow">Acabamento especial</label>
-          <div className="sim-options sim-options--finish">
-            {FINISHES.map((f, i) => (
-              <button
-                key={f.name}
-                type="button"
-                className={`sim-option ${sel.finish === i ? 'active' : ''}`}
-                onClick={() => setSel(s => ({ ...s, finish: i }))}
-              >
-                <span className="sim-finish-icon">{f.icon}</span>
+          <label className="sim-label eyebrow">Acabamento</label>
+          <div className="sim-options">
+            {FINISHES.slice(0, 4).map((f, i) => (
+              <button key={f.name} type="button" className={`sim-option ${sel.finish === i ? 'active' : ''}`} onClick={() => setSel(s => ({ ...s, finish: i }))}>
                 {f.name}
               </button>
             ))}
           </div>
         </div>
-
         <div className="sim-group">
-          <label className="sim-label eyebrow">Nome / Texto principal</label>
-          <input
-            className="sim-input"
-            value={sel.text}
-            onChange={e => setSel(s => ({ ...s, text: e.target.value }))}
-            placeholder="Ex: Maria & João"
-            maxLength={40}
-          />
+          <label className="sim-label eyebrow">Texto personalizado</label>
+          <input className="sim-input" value={sel.text} onChange={e => setSel(s => ({ ...s, text: e.target.value }))} maxLength={40} />
         </div>
-
         <div className="sim-actions">
-          <Link to="/contato" className="btn btn-primary btn-lg sim-cta">
-            Quero este projeto →
-          </Link>
+          <Link to="/contato" className="btn btn-primary btn-lg">Quero este projeto →</Link>
         </div>
       </div>
     </div>
@@ -156,9 +134,7 @@ function FaqItem({ q, a }) {
         <span className="faq-icon">{open ? '−' : '+'}</span>
       </button>
       <div className="faq-content" aria-hidden={!open}>
-        <div>
-          <p className="faq-a">{a}</p>
-        </div>
+        <div><p className="faq-a">{a}</p></div>
       </div>
     </div>
   );
@@ -168,18 +144,22 @@ export default function Personalizacao() {
   useReveal();
   const [activeStep, setActiveStep] = useState(0);
 
+  const faqs = [
+    { q: 'Qual o pedido mínimo?', a: 'O mínimo varia por produto. Convites de casamento: mínimo 50 unidades. Papelaria corporativa: mínimo 100 unidades.' },
+    { q: 'Posso solicitar amostras?', a: 'Sim! Enviamos o kit de amostras de papéis e acabamentos para você sentir a qualidade antes de fechar o pedido. O kit tem o custo de R$ 25 (valor descontado do pedido final).' },
+    { q: 'Vocês atendem fora de São Paulo?', a: 'Atendemos todo o Brasil via Correios e transportadoras especializadas. Para clientes de SP, também há opção de retirada no nosso ateliê.' },
+    { q: 'Como funciona a aprovação de arte?', a: 'Enviamos previews digitais em PDF e imagem. Você aprova online com assinatura digital. A produção só inicia após a aprovação formal do cliente.' },
+    { q: 'Posso cancelar após iniciar a produção?', a: 'Cancelamentos antes do início da produção são aceitos com reembolso integral. Após o início da produção, não é possível cancelar por se tratar de um produto personalizado.' },
+    { q: 'Qual o prazo para convites de casamento?', a: 'Recomendamos iniciar o processo com pelo menos 60 dias de antecedência. O processo criativo e a produção levam, em média, de 25 a 35 dias úteis.' },
+  ];
+
   return (
     <div className="personalizacao">
       <section className="pers-hero mesh-bg noise">
         <div className="container">
           <span className="eyebrow reveal">Processo Criativo</span>
-          <h1 className="display-1 reveal reveal-delay-1">
-            A arte de criar <br />
-            <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>algo único</em>
-          </h1>
-          <p className="body-large reveal reveal-delay-2">
-            Personalização não é só colocar um nome. É entender sua história e criar algo que só poderia existir para você.
-          </p>
+          <h1 className="display-1 reveal reveal-delay-1">A arte de criar <br /><em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>algo único</em></h1>
+          <p className="body-large reveal reveal-delay-2">Entendemos sua história para criar algo exclusivo para você.</p>
         </div>
       </section>
 
@@ -188,41 +168,21 @@ export default function Personalizacao() {
           <div className="pers-steps">
             <div className="pers-steps-nav">
               {STEPS.map((s, i) => (
-                <button
-                  key={s.num}
-                  type="button"
-                  className={`step-nav-btn ${activeStep === i ? 'active' : ''}`}
-                  onClick={() => setActiveStep(i)}
-                >
+                <button key={s.num} type="button" className={`step-nav-btn ${activeStep === i ? 'active' : ''}`} onClick={() => setActiveStep(i)}>
                   <span className="step-nav-num eyebrow">{s.num}</span>
                   <span className="step-nav-title">{s.title}</span>
                 </button>
               ))}
             </div>
-
             <div className="pers-steps-content">
-              <div className="step-panel">
+              <div className="step-panel" key={activeStep}>
                 <div className="step-icon">{STEPS[activeStep].icon}</div>
                 <img className="step-image" src={STEPS[activeStep].image} alt={STEPS[activeStep].title} loading="lazy" />
                 <h3 className="step-title display-3">{STEPS[activeStep].title}</h3>
                 <p className="step-desc body-large">{STEPS[activeStep].desc}</p>
                 <div className="step-nav-arrows">
-                  <button
-                    className="btn btn-outline"
-                    type="button"
-                    onClick={() => setActiveStep(i => Math.max(0, i - 1))}
-                    disabled={activeStep === 0}
-                  >
-                    ← Anterior
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    type="button"
-                    onClick={() => setActiveStep(i => Math.min(STEPS.length - 1, i + 1))}
-                    disabled={activeStep === STEPS.length - 1}
-                  >
-                    Próximo →
-                  </button>
+                  <button className="btn btn-outline" type="button" onClick={() => setActiveStep(i => Math.max(0, i - 1))} disabled={activeStep === 0}>← Anterior</button>
+                  <button className="btn btn-primary" type="button" onClick={() => setActiveStep(i => Math.min(STEPS.length - 1, i + 1))} disabled={activeStep === STEPS.length - 1}>Próximo →</button>
                 </div>
               </div>
             </div>
@@ -230,10 +190,48 @@ export default function Personalizacao() {
         </div>
       </section>
 
+      <section className="section pers-materials">
+        <div className="container-wide">
+          <div className="section-header reveal">
+            <span className="eyebrow">Nossa curadoria</span>
+            <h2 className="display-2">Papéis selecionados</h2>
+          </div>
+          <div className="materials-grid">
+            {MATERIALS.map((m, i) => (
+              <div className="material-card" key={m.name}>
+                <div className="material-swatch" style={{ background: m.color }} />
+                <div className="material-info">
+                  <h3 className="material-name">{m.name}</h3>
+                  <p className="material-desc">{m.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section pers-finishes section-dark">
+        <div className="container-wide">
+          <div className="section-header section-header--light reveal">
+            <span className="eyebrow">Técnicas especiais</span>
+            <h2 className="display-2">Acabamentos premium</h2>
+          </div>
+          <div className="finishes-grid">
+            {FINISHES.map((f) => (
+              <div className="finish-card" key={f.name}>
+                <div className="finish-icon">{f.icon}</div>
+                <h3 className="finish-name">{f.name}</h3>
+                <p className="finish-desc">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section pers-simulator">
         <div className="container-wide">
           <div className="section-header reveal">
-            <h2 className="display-2">Monte seu convite</h2>
+            <h2 className="display-2">Simulador de Convite</h2>
           </div>
           <Simulator />
         </div>
@@ -241,12 +239,13 @@ export default function Personalizacao() {
 
       <section className="section pers-faq">
         <div className="container">
+          <div className="section-header reveal">
+            <span className="eyebrow">Dúvidas</span>
+            <h2 className="display-2">Perguntas comuns</h2>
+          </div>
           <div className="faq-list">
-            {[
-              { q: 'Qual o pedido mínimo?', a: 'O mínimo varia por produto. Convites de casamento: mínimo 50 unidades.' },
-              { q: 'Qual o prazo médio?', a: 'O processo criativo e a produção levam em média de 25 a 35 dias úteis.' },
-            ].map((faq, i) => (
-              <FaqItem key={i} {...faq} />
+            {faqs.map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} />
             ))}
           </div>
         </div>
