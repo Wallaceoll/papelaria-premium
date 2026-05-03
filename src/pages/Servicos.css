@@ -128,11 +128,12 @@
 }
 
 .servicos-packages__card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: var(--space-8);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: var(--space-8);
+  text-align: center;
+  gap: var(--space-10);
+  padding: var(--space-12);
   background: linear-gradient(135deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface-alt) 72%, transparent));
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
@@ -153,24 +154,28 @@
 
 .servicos-packages__header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: var(--space-4);
-  align-items: end;
-  padding-bottom: var(--space-5);
+  align-items: center;
+  padding-bottom: var(--space-6);
   border-bottom: 1px solid var(--border-soft);
+  width: 100%;
 }
 
 .servicos-packages__header p {
   color: var(--text-secondary);
   font-size: var(--text-sm);
   line-height: 1.7;
-  max-width: 28rem;
+  max-width: 32rem;
+  margin: 0 auto;
 }
 
 .servicos-packages__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
 .servicos-packages__tags span {
@@ -186,11 +191,13 @@
 .servicos-packages__actions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  align-items: flex-start;
-  padding: var(--space-6);
+  gap: var(--space-5);
+  align-items: center;
+  padding: var(--space-8);
+  width: 100%;
+  max-width: 600px;
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  background: rgba(26, 23, 20, 0.03);
   border: 1px solid var(--border-soft);
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth);
 }
