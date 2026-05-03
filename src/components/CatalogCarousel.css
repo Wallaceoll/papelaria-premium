@@ -47,12 +47,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   overflow: hidden;
   border: 1px solid var(--border-soft);
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 42%),
-    linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(242, 235, 223, 0.94) 58%, rgba(236, 228, 214, 0.92));
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
   min-height: 31rem;
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth);
@@ -79,11 +76,9 @@
 }
 
 .catalog-carousel__slide.is-active .catalog-carousel__item {
-  border-color: rgba(201, 168, 76, 0.24);
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 40%),
-    linear-gradient(145deg, rgba(255, 252, 247, 1), rgba(245, 238, 227, 0.98) 56%, rgba(238, 228, 212, 0.96));
-  box-shadow: 0 28px 56px rgba(37, 31, 24, 0.12), 0 0 0 1px rgba(201, 168, 76, 0.08);
+  border-color: var(--gold);
+  background: var(--surface-alt, var(--surface));
+  box-shadow: var(--shadow-lg);
 }
 
 .catalog-carousel__image-wrap {
@@ -144,7 +139,7 @@
 }
 
 .catalog-carousel__slide.is-active .catalog-carousel__title {
-  color: var(--ink-soft);
+  color: var(--gold);
 }
 
 .catalog-carousel__cta {
