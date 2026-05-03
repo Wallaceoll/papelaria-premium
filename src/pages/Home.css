@@ -216,6 +216,7 @@
 
 .catalog-card {
   position: relative;
+  min-height: 440px;
   overflow: hidden;
   text-decoration: none;
   border-radius: var(--radius-lg);
