@@ -113,7 +113,7 @@ const FINISHES = [
     name: 'Verniz UV',
     icon: '◇',
     tag: 'Brilho localizado',
-    desc: 'Camada de verniz de alta brilhosidade aplicada em regiões específicas com precisão. Cria contraste visual entre áreas brilhantes e matte, destacando elementos como logotipos e ilustrações.',
+    desc: 'Camada de verniz de alto brilho aplicada em regiões específicas com precisão. Cria contraste visual entre áreas brilhantes e matte, destacando elementos como logotipos e ilustrações.',
     specs: [
       { label: 'Processo', value: 'Serigrafia UV' },
       { label: 'Compatibilidade', value: 'Couchê Matte 350g' },

@@ -125,7 +125,7 @@ export default function Contato() {
                   <div className="success-icon">✦</div>
                   <h2 className="heading-1">Mensagem enviada!</h2>
                   <p className="body-large">
-                    Obrigada pelo contato. Nossa equipe vai analisar seu projeto e retornar em até 24 horas úteis.
+                    Obrigado pelo contato. Nossa equipe vai analisar seu projeto e retornar em até 24 horas úteis.
                   </p>
                   <button
                     className="btn btn-outline"
