@@ -42,54 +42,55 @@ export default function Header() {
     navigate(path);
   };
 
-  return (
-    <header className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
-      <div className="header__inner container-wide">
-        <Link
-          to="/"
-          className="header__logo"
-          onClick={(event) => {
-            if (pathname === '/') {
-              event.preventDefault();
-              handleNavClick('/');
-            }
-          }}
-        >
-          <span className="header__logo-mark">F</span>
-          <span className="header__logo-text">Folia</span>
-        </Link>
-
-        <nav className="header__nav">
-          {nav.map(item => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`header__link ${pathname === item.path ? 'active' : ''}`}
-              onClick={(event) => {
-                if (pathname === item.path) {
-                  event.preventDefault();
-                }
-                handleNavClick(item.path);
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="header__actions">
-          <Link to="/contato" className="btn btn-primary btn-header">
-            Solicitar orçamento
-          </Link>
-          <button
-            className={`header__burger ${menuOpen ? 'open' : ''}`}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Menu"
+    <>
+      <header className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
+        <div className="header__inner container-wide">
+          <Link
+            to="/"
+            className="header__logo"
+            onClick={(event) => {
+              if (pathname === '/') {
+                event.preventDefault();
+                handleNavClick('/');
+              }
+            }}
           >
-            <span /><span /><span />
-          </button>
+            <span className="header__logo-mark">F</span>
+            <span className="header__logo-text">Folia</span>
+          </Link>
+
+          <nav className="header__nav">
+            {nav.map(item => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`header__link ${pathname === item.path ? 'active' : ''}`}
+                onClick={(event) => {
+                  if (pathname === item.path) {
+                    event.preventDefault();
+                  }
+                  handleNavClick(item.path);
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="header__actions">
+            <Link to="/contato" className="btn btn-primary btn-header">
+              Solicitar orçamento
+            </Link>
+            <button
+              className={`header__burger ${menuOpen ? 'open' : ''}`}
+              onClick={() => setMenuOpen(v => !v)}
+              aria-label="Menu"
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <div className={`header__mobile ${menuOpen ? 'open' : ''}`}>
         <nav className="header__mobile-nav">
@@ -110,9 +111,8 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          {/* Orçamento removido para mobile */}
         </nav>
       </div>
-    </header>
+    </>
   );
 }
