@@ -525,8 +525,15 @@
   letter-spacing: 0.04em;
   line-height: 1.2;
 }
-.sim-card__detail { font-size: var(--text-xs); color: var(--ink-muted); letter-spacing: 0.08em; }
-.sim-card__venue  { font-size: var(--text-xs); color: var(--ink-light); }
+.sim-card__detail { 
+  font-size: var(--text-xs); 
+  color: #6B6560 !important; 
+  letter-spacing: 0.08em; 
+}
+.sim-card__venue  { 
+  font-size: var(--text-xs); 
+  color: #A09A94 !important; 
+}
 .sim-card__finish-badge {
   display: flex;
   align-items: center;
@@ -536,9 +543,9 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: #6B6560 !important;
   padding-top: var(--space-4);
-  border-top: 1px solid var(--border-soft);
+  border-top: 1px solid rgba(26, 23, 20, 0.1);
 }
 .sim-caption { font-size: var(--text-xs); color: var(--text-muted); text-align: center; }
 
