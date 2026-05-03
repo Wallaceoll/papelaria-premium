@@ -47,12 +47,24 @@
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
-  --text-xs:   0.85rem;
-  --text-sm:   1rem;
-  --text-base: 1.15rem;
-  --text-lg:   1.35rem;
-  --text-xl:   1.6rem;
-  --text-2xl:  1.85rem;
+  --text-xs:   0.8rem;
+  --text-sm:   0.925rem;
+  --text-base: 1.05rem;
+  --text-lg:   1.2rem;
+  --text-xl:   1.4rem;
+}
+
+/* Desktop Font Boost */
+@media (min-width: 1024px) {
+  :root {
+    --text-sm:   1.15rem;
+    --text-base: 1.3rem;
+    --text-lg:   1.5rem;
+  }
+}
+
+:root {
+  --text-2xl:  1.6rem;
   --text-3xl:  2.2rem;
   --text-4xl:  2.75rem;
   --text-5xl:  3.5rem;
