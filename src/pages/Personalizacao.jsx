@@ -26,7 +26,7 @@ const STEPS = [
     title: 'Preview e refinamento',
     desc: 'Você recebe um preview digital em alta resolução com todas as peças do projeto. Analisamos juntos cada detalhe e fazemos quantos ajustes forem necessários até que tudo esteja exatamente certo.',
     detail: 'Até 3 rodadas de revisão inclusas. Revisões adicionais por valor acordado.',
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80',
   },
   {
     num: '04',
@@ -56,13 +56,132 @@ const MATERIALS = [
 ];
 
 const FINISHES = [
-  { name: 'Foil Dourado', icon: '✦', desc: 'Película metálica prensada a quente. O acabamento mais desejado em papelaria premium.', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80' },
-  { name: 'Foil Prata', icon: '◈', desc: 'Elegância moderna e contemporânea. Ótimo para paletas frias.', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80' },
-  { name: 'Relevo Seco', icon: '◎', desc: 'Textura tátil sem tinta. Cria profundidade e sofisticação ao toque.', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80' },
-  { name: 'Corte a Laser', icon: '◍', desc: 'Recortes precisos com formas complexas. Transforma o convite em obra de arte.', image: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1200&q=80' },
-  { name: 'Verniz UV', icon: '◇', desc: 'Brilho localizado em áreas específicas.', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' },
-  { name: 'Letterpress', icon: '◉', desc: 'Impressão tipográfica com pressão. Artesanal e atemporal.', image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80' },
+  {
+    id: 'foil-gold',
+    name: 'Foil Dourado',
+    icon: '✦',
+    tag: 'Mais popular',
+    desc: 'Película metálica prensada a quente com temperatura controlada. O acabamento mais desejado em papelaria premium — cria reflexo dourado com profundidade única que não se obtém com impressão digital.',
+    specs: [
+      { label: 'Processo', value: 'Hot stamping a 180°C' },
+      { label: 'Compatibilidade', value: 'Cotton, Linho, Perolado' },
+      { label: 'Prazo extra', value: '+3 dias úteis' },
+      { label: 'Ideal para', value: 'Logotipos, títulos' },
+    ],
+  },
+  {
+    id: 'foil-silver',
+    name: 'Foil Prata',
+    icon: '◈',
+    tag: 'Elegância moderna',
+    desc: 'Elegância contemporânea com reflexo metálico frio. Combina com paletas azul, verde e tons neutros. Indicado para marcas modernas e eventos sofisticados com visual minimalista.',
+    specs: [
+      { label: 'Processo', value: 'Hot stamping a 175°C' },
+      { label: 'Compatibilidade', value: 'Todos os papéis' },
+      { label: 'Prazo extra', value: '+3 dias úteis' },
+      { label: 'Ideal para', value: 'Eventos noturnos' },
+    ],
+  },
+  {
+    id: 'emboss',
+    name: 'Relevo Seco',
+    icon: '◎',
+    tag: 'Tátil',
+    desc: 'Técnica sem tinta — a prensa molda o papel criando textura tridimensional perceptível ao toque. Confere sofisticação discreta e sensorial. Muito usado em brasões, monogramas e bordas decorativas.',
+    specs: [
+      { label: 'Processo', value: 'Matriz metálica CNC' },
+      { label: 'Compatibilidade', value: 'Cotton 300g, Linho 240g' },
+      { label: 'Prazo extra', value: '+4 dias úteis' },
+      { label: 'Ideal para', value: 'Brasões, monogramas' },
+    ],
+  },
+  {
+    id: 'laser',
+    name: 'Corte a Laser',
+    icon: '◍',
+    tag: 'Artístico',
+    desc: 'Recortes milimétricos com precisão de 0.1mm. Permite criar rendas, padrões geométricos e formas orgânicas impossíveis de cortar manualmente. Transforma o convite em peça de arte tridimensional.',
+    specs: [
+      { label: 'Precisão', value: '±0.1mm' },
+      { label: 'Compatibilidade', value: 'Cotton, Kraft, Color Plus' },
+      { label: 'Prazo extra', value: '+5 dias úteis' },
+      { label: 'Ideal para', value: 'Bordas, janelas, rendas' },
+    ],
+  },
+  {
+    id: 'uv',
+    name: 'Verniz UV',
+    icon: '◇',
+    tag: 'Brilho localizado',
+    desc: 'Camada de verniz de alta brilhosidade aplicada em regiões específicas com precisão. Cria contraste visual entre áreas brilhantes e matte, destacando elementos como logotipos e ilustrações.',
+    specs: [
+      { label: 'Processo', value: 'Serigrafia UV' },
+      { label: 'Compatibilidade', value: 'Couchê Matte 350g' },
+      { label: 'Prazo extra', value: '+2 dias úteis' },
+      { label: 'Ideal para', value: 'Logotipos, destaques' },
+    ],
+  },
+  {
+    id: 'letterpress',
+    name: 'Letterpress',
+    icon: '◉',
+    tag: 'Artesanal',
+    desc: 'Impressão tipográfica com pressão mecânica — cada letra é prensada individualmente no papel, criando leve depressão visível e tátil. Técnica milenar que remete à tradição gráfica artesanal.',
+    specs: [
+      { label: 'Processo', value: 'Prensa tipográfica' },
+      { label: 'Compatibilidade', value: 'Cotton 300g, Linho 240g' },
+      { label: 'Prazo extra', value: '+7 dias úteis' },
+      { label: 'Ideal para', value: 'Texto, títulos, bordas' },
+    ],
+  },
 ];
+
+function FinishModal({ finish, onClose }) {
+  if (!finish) return null;
+  return (
+    <div className="finish-modal-bg" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="finish-modal">
+        <button type="button" className="finish-modal__close" onClick={onClose}>✕</button>
+        <div className={`finish-modal__preview finish-modal__preview--${finish.id}`}>
+          <div className="finish-modal__card">
+            <span className="finish-modal__card-label">✦ Convite de Casamento</span>
+            <span className="finish-modal__card-name">Ana &amp; Rafael</span>
+            <span className="finish-modal__card-date">15 · NOV · 2025</span>
+            {finish.id === 'laser' && (
+              <>
+                <div className="finish-modal__laser-tl" />
+                <div className="finish-modal__laser-br" />
+              </>
+            )}
+          </div>
+        </div>
+        <div className="finish-modal__body">
+          <div className="finish-modal__title-row">
+            <div className="finish-modal__icon">{finish.icon}</div>
+            <h3 className="finish-modal__name">{finish.name}</h3>
+          </div>
+          <p className="finish-modal__desc">{finish.desc}</p>
+          <div className="finish-modal__specs">
+            {finish.specs.map(s => (
+              <div key={s.label} className="finish-modal__spec">
+                <span className="finish-modal__spec-label">{s.label}</span>
+                <span className="finish-modal__spec-value">{s.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="finish-modal__actions">
+            <Link to="/contato" className="btn btn-primary" onClick={onClose}>
+              Quero este acabamento →
+            </Link>
+            <button type="button" className="btn btn-outline-light" onClick={onClose}>
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Simulator() {
   const [sel, setSel] = useState({ material: 0, finish: 0, color: '#C9A84C', text: 'Ana & Rafael' });
@@ -143,6 +262,7 @@ function FaqItem({ q, a }) {
 export default function Personalizacao() {
   useReveal();
   const [activeStep, setActiveStep] = useState(0);
+  const [activeFinish, setActiveFinish] = useState(null);
 
   const faqs = [
     { q: 'Qual o pedido mínimo?', a: 'O mínimo varia por produto. Convites de casamento: mínimo 50 unidades. Papelaria corporativa: mínimo 100 unidades.' },
@@ -155,6 +275,8 @@ export default function Personalizacao() {
 
   return (
     <div className="personalizacao">
+      <FinishModal finish={activeFinish} onClose={() => setActiveFinish(null)} />
+
       <section className="pers-hero mesh-bg noise">
         <div className="container">
           <span className="eyebrow reveal">Processo Criativo</span>
@@ -197,7 +319,7 @@ export default function Personalizacao() {
             <h2 className="display-2">Papéis selecionados</h2>
           </div>
           <div className="materials-grid">
-            {MATERIALS.map((m, i) => (
+            {MATERIALS.map((m) => (
               <div className="material-card" key={m.name}>
                 <div className="material-swatch" style={{ background: m.color }} />
                 <div className="material-info">
@@ -218,11 +340,20 @@ export default function Personalizacao() {
           </div>
           <div className="finishes-grid">
             {FINISHES.map((f) => (
-              <div className="finish-card" key={f.name}>
-                <div className="finish-icon">{f.icon}</div>
+              <button
+                key={f.name}
+                type="button"
+                className={`finish-card finish-card--${f.id}`}
+                onClick={() => setActiveFinish(f)}
+              >
+                <div className="finish-card__top">
+                  <div className="finish-icon">{f.icon}</div>
+                  <span className="finish-tag">{f.tag}</span>
+                </div>
                 <h3 className="finish-name">{f.name}</h3>
                 <p className="finish-desc">{f.desc}</p>
-              </div>
+                <span className="finish-cta">Ver detalhes →</span>
+              </button>
             ))}
           </div>
         </div>
