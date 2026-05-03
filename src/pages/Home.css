@@ -126,7 +126,7 @@
   gap: var(--space-4);
   align-items: center;
   padding: var(--space-4);
-  background: rgba(253, 251, 248, 0.85);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   text-decoration: none;
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth);
 }
@@ -173,7 +173,7 @@
 }
 
 .catalog-intro {
-  background: linear-gradient(180deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.55));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface-alt) 55.00000000000001%, transparent));
 }
 
 .catalog-intro__lead {
@@ -299,11 +299,11 @@
 .process-desc {
   font-size: var(--text-sm);
   line-height: 1.7;
-  color: rgba(253, 251, 248, 0.56);
+  color: color-mix(in srgb, var(--bg) 56.00000000000001%, transparent);
 }
 
 .testimonials--light {
-  background: rgba(247, 244, 239, 0.55);
+  background: color-mix(in srgb, var(--surface) 55.00000000000001%, transparent);
 }
 
 .testimonials-grid {
@@ -313,7 +313,7 @@
 }
 
 .testimonial-card {
-  background: rgba(253, 251, 248, 0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
@@ -484,7 +484,7 @@
 .hero__mini-points span {
   padding: 0.7rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(253, 251, 248, 0.8);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-xs);
 }
@@ -500,7 +500,7 @@
 .hero-showcase__main,
 .hero-showcase__aside {
   padding: var(--space-6);
-  background: rgba(253, 251, 248, 0.82);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(14px);
 }
 
@@ -538,7 +538,7 @@
   align-items: center;
   padding: var(--space-4);
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(247, 244, 239, 0.8), rgba(253, 251, 248, 0.95));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 80%, transparent), color-mix(in srgb, var(--bg) 95%, transparent));
   border: 1px solid var(--border-soft);
 }
 
@@ -586,7 +586,7 @@
   padding: var(--space-5) 0;
   border-top: 1px solid var(--border-soft);
   border-bottom: 1px solid var(--border-soft);
-  background: rgba(247, 244, 239, 0.65);
+  background: color-mix(in srgb, var(--surface) 65%, transparent);
 }
 
 .trust-strip__inner {
@@ -601,7 +601,7 @@
 }
 
 .catalog-intro {
-  background: linear-gradient(180deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.55));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface-alt) 55.00000000000001%, transparent));
 }
 
 .catalog-intro__grid {
@@ -696,7 +696,7 @@
 
 .gallery-card {
   padding: var(--space-5);
-  background: linear-gradient(180deg, rgba(253, 251, 248, 0.98), rgba(247, 244, 239, 0.9));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface) 90%, transparent));
 }
 
 .gallery-card__body {
@@ -730,12 +730,12 @@
 .process-item--card {
   padding: var(--space-6);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(253, 251, 248, 0.08);
-  background: rgba(253, 251, 248, 0.04);
+  border: 1px solid color-mix(in srgb, var(--bg) 8%, transparent);
+  background: color-mix(in srgb, var(--bg) 4%, transparent);
 }
 
 .testimonials--light {
-  background: rgba(247, 244, 239, 0.55);
+  background: color-mix(in srgb, var(--surface) 55.00000000000001%, transparent);
 }
 
 .testimonials-grid {
@@ -745,7 +745,7 @@
 }
 
 .testimonial-card {
-  background: rgba(253, 251, 248, 0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
@@ -825,7 +825,7 @@
   border-radius: calc(var(--radius-lg) - 4px);
   overflow: hidden;
   border: 1px solid rgba(26, 23, 20, 0.08);
-  background: linear-gradient(180deg, rgba(253, 251, 248, 0.95), rgba(247, 244, 239, 0.88));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 95%, transparent), color-mix(in srgb, var(--surface) 88%, transparent));
 }
 
 .product-mock--compact {
@@ -844,7 +844,7 @@
   left: 10%;
   top: 20%;
   transform: rotate(-10deg);
-  background: rgba(253, 251, 248, 0.98);
+  background: color-mix(in srgb, var(--bg) 98%, transparent);
 }
 
 .product-mock__sheet--top {

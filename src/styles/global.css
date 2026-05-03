@@ -300,7 +300,7 @@ ul, ol { list-style: none; }
 }
 .btn-gold:hover {
   background: var(--gold-dark);
-  color: var(--warm-white);
+  color: var(--bg);
   transform: translateY(-1px);
   box-shadow: 0 12px 40px rgba(201,168,76,0.3);
 }
@@ -500,7 +500,12 @@ ul, ol { list-style: none; }
 ::-webkit-scrollbar-thumb  { background: var(--ink-light); border-radius: var(--radius-full); }
 ::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }
 
-::selection { background: var(--gold-pale); color: var(--ink); }
+@media (prefers-color-scheme: light) {
+  ::selection { background: var(--gold-pale); color: var(--ink); }
+}
+@media (prefers-color-scheme: dark) {
+  ::selection { background: var(--gold-dark); color: var(--bg); }
+}
 
 @media (max-width: 768px) {
   .container, .container-wide { padding: 0 var(--space-5); }

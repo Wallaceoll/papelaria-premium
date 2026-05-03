@@ -18,7 +18,7 @@
 .contato-hero__meta span {
   padding: 0.7rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(253,251,248,0.85);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   border: 1px solid var(--border-soft);
   color: var(--ink-muted);
   font-size: var(--text-sm);

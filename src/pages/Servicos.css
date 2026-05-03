@@ -26,7 +26,7 @@
 .servicos-hero__chips span {
   padding: 0.7rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(253, 251, 248, 0.9);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border: 1px solid var(--border-soft);
   color: var(--ink-muted);
   font-size: var(--text-sm);
@@ -34,7 +34,7 @@
 
 .servicos-hero__board {
   padding: var(--space-6);
-  background: rgba(253, 251, 248, 0.84);
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
   backdrop-filter: blur(14px);
 }
 
@@ -104,7 +104,7 @@
   position: sticky;
   top: var(--nav-height);
   z-index: 100;
-  background: rgba(253, 251, 248, 0.92);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(12px);
 }
 
@@ -118,7 +118,7 @@
   gap: var(--space-8);
   align-items: center;
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.72));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface-alt) 72%, transparent));
   border: 1px solid var(--border-soft);
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
 }
@@ -160,7 +160,7 @@
 .servicos-packages__tags span {
   padding: 0.7rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(253, 251, 248, 0.8);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-xs);
   color: var(--ink-muted);
@@ -174,7 +174,7 @@
   align-items: flex-start;
   padding: var(--space-6);
   border-radius: var(--radius-lg);
-  background: rgba(253, 251, 248, 0.9);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border: 1px solid var(--border-soft);
   transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), background var(--dur-base) var(--ease-smooth);
 }
@@ -182,7 +182,7 @@
 .servicos-packages__card:hover .servicos-packages__actions {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  background: rgba(253, 251, 248, 0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
 }
 
 .servicos-packages__actions p {
@@ -220,7 +220,7 @@
 .produto-card {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(253, 251, 248, 1), rgba(247, 244, 239, 0.9));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 100%, transparent), color-mix(in srgb, var(--surface) 90%, transparent));
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
 .servicos-hero__layout {
@@ -242,7 +242,7 @@
   display: grid;
   gap: var(--space-4);
   padding: var(--space-6);
-  background: rgba(253, 251, 248, 0.82);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(14px);
   align-self: center;
   width: 100%;
@@ -345,7 +345,7 @@
   height: 2.9rem;
   border-radius: 999px;
   border: 1px solid var(--border-soft);
-  background: rgba(253, 251, 248, 0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   color: var(--ink);
   box-shadow: var(--shadow-xs);
   cursor: pointer;
@@ -431,7 +431,7 @@
   position: sticky;
   top: var(--nav-height);
   z-index: 100;
-  background: rgba(253, 251, 248, 0.94);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
   backdrop-filter: blur(12px);
 }
 
@@ -465,7 +465,7 @@
 .produto-card {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(253, 251, 248, 1), rgba(247, 244, 239, 0.9));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 100%, transparent), color-mix(in srgb, var(--surface) 90%, transparent));
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   display: flex;
@@ -547,7 +547,7 @@
   gap: 0.55rem;
   padding: var(--space-4);
   border-radius: var(--radius-md);
-  background: rgba(253, 251, 248, 0.72);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
   border: 1px solid var(--border-soft);
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -565,7 +565,7 @@
 }
 
 .diferenciais {
-  background: rgba(247, 244, 239, 0.55);
+  background: color-mix(in srgb, var(--surface) 55.00000000000001%, transparent);
 }
 
 .diferenciais__layout {
@@ -591,7 +591,7 @@
 }
 
 .servicos-cta {
-  background: linear-gradient(180deg, rgba(237, 232, 223, 0.8), rgba(253, 251, 248, 1));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-alt) 80%, transparent), color-mix(in srgb, var(--bg) 100%, transparent));
 }
 
 .servicos-cta__inner {
@@ -731,7 +731,7 @@
   gap: 0.55rem;
   padding: var(--space-4);
   border-radius: var(--radius-md);
-  background: rgba(253, 251, 248, 0.72);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
   border: 1px solid var(--border-soft);
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -754,7 +754,7 @@
   border-radius: calc(var(--radius-lg) - 4px);
   overflow: hidden;
   border: 1px solid rgba(26, 23, 20, 0.07);
-  background: linear-gradient(180deg, rgba(253, 251, 248, 0.98), rgba(237, 232, 223, 0.85));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--surface-alt) 85%, transparent));
 }
 
 .produto-mock__plane {
@@ -828,7 +828,7 @@
 }
 
 .diferenciais {
-  background: rgba(247, 244, 239, 0.55);
+  background: color-mix(in srgb, var(--surface) 55.00000000000001%, transparent);
 }
 
 .diferenciais__layout {
@@ -854,7 +854,7 @@
 }
 
 .servicos-cta {
-  background: linear-gradient(180deg, rgba(237, 232, 223, 0.8), rgba(253, 251, 248, 1));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-alt) 80%, transparent), color-mix(in srgb, var(--bg) 100%, transparent));
 }
 
 .servicos-cta__inner {
