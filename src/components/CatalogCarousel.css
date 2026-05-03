@@ -262,4 +262,10 @@
   .catalog-carousel__track {
     transition-duration: var(--dur-base);
   }
+
+  .catalog-carousel__cta {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
 }
