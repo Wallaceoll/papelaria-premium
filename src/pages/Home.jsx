@@ -199,7 +199,7 @@ export default function Home() {
       </section>
 
       <section className="section section-xl catalog-intro">
-        <div className="container-wide catalog-intro__grid">
+        <div className="container-wide catalog-intro__layout">
           <div className="catalog-intro__copy reveal">
             <span className="eyebrow">Visão do catálogo</span>
             <h2 className="display-2">Mais produto visível, mais clareza comercial e mais confiança para comprar.</h2>
@@ -208,22 +208,24 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="catalog-intro__cards">
-            {CATALOG_ITEMS.map((item, index) => (
-              <Link
-                to={item.to}
-                className={`catalog-card card reveal reveal-delay-${(index % 4) + 1}`}
-                key={item.title}
-              >
-                <img className="catalog-card__image" src={item.image} alt={item.title} loading="lazy" />
-                <div className="catalog-card__overlay" />
-                <div className="catalog-card__body">
-                  <h3 className="heading-1">{item.title}</h3>
-                  <p className="body-base">{item.desc}</p>
-                  <span className="catalog-card__cta btn btn-primary">{item.cta}</span>
-                </div>
-              </Link>
-            ))}
+          <div className="catalog-intro__cards-wrap">
+            <div className="catalog-intro__cards">
+              {CATALOG_ITEMS.map((item, index) => (
+                <Link
+                  to={item.to}
+                  className={`catalog-card card reveal reveal-delay-${(index % 4) + 1}`}
+                  key={item.title}
+                >
+                  <img className="catalog-card__image" src={item.image} alt={item.title} loading="lazy" />
+                  <div className="catalog-card__overlay" />
+                  <div className="catalog-card__body">
+                    <h3 className="heading-1">{item.title}</h3>
+                    <p className="body-base">{item.desc}</p>
+                    <span className="catalog-card__cta btn btn-primary">{item.cta}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
