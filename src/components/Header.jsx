@@ -110,9 +110,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link to="/contato" className="btn btn-gold btn-lg header__mobile-cta">
-            Solicitar orçamento
-          </Link>
+          {/* Orçamento removido para mobile */}
         </nav>
       </div>
     </header>
