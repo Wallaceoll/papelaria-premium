@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import CatalogCarousel from '../components/CatalogCarousel';
+
 import { useReveal } from '../hooks/useReveal';
 import './Servicos.css';
 
