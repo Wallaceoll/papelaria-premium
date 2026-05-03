@@ -299,7 +299,7 @@
 .process-desc {
   font-size: var(--text-sm);
   line-height: 1.7;
-  color: color-mix(in srgb, var(--bg) 56.00000000000001%, transparent);
+  color: rgba(253, 251, 248, 0.56);
 }
 
 .testimonials--light {
@@ -730,8 +730,8 @@
 .process-item--card {
   padding: var(--space-6);
   border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--bg) 8%, transparent);
-  background: color-mix(in srgb, var(--bg) 4%, transparent);
+  border: 1px solid rgba(253, 251, 248, 0.08);
+  background: rgba(253, 251, 248, 0.04);
 }
 
 .testimonials--light {
