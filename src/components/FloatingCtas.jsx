@@ -1,13 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
 
 const WHATSAPP_URL = 'https://wa.me/5511966068951';
 
 export default function FloatingCtas() {
-  const { pathname } = useLocation();
 
-  const secondaryAction = pathname === '/contato'
-    ? { to: '/servicos', label: 'Ver catálogo' }
-    : { to: '/contato', label: 'Pedir orçamento' };
+
 
   return (
     <div className="floating-ctas" aria-label="Ações rápidas">
