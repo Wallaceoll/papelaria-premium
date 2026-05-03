@@ -201,6 +201,18 @@
 /* Responsive */
 @media (max-width: 900px) {
   .header__nav { display: none; }
-  .btn-header  { display: none; }
   .header__burger { display: flex; }
+  
+  .btn-header {
+    padding: 8px 16px;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-header {
+    padding: 6px 12px;
+    font-size: 0.65rem;
+  }
 }
