@@ -523,22 +523,26 @@
   .catalog-intro__cards {
     flex-direction: column;
     align-items: center;
-    padding-bottom: 300px;
+    padding-bottom: 120px;
+    gap: 0;
   }
   .catalog-card,
   .catalog-card:nth-child(n) {
     margin-right: 0;
-    margin-bottom: -360px;
-    width: 280px;
-    transform: rotate(0deg);
+    margin-bottom: -320px;
+    width: 290px;
+    transform: rotate(0deg) translateY(0);
+    transition: all 0.5s var(--ease-smooth);
   }
+  .catalog-card:nth-child(1) { z-index: 4; }
+  .catalog-card:nth-child(2) { z-index: 3; }
+  .catalog-card:nth-child(3) { z-index: 2; }
+  .catalog-card:nth-child(4) { z-index: 1; }
+
   .catalog-card:hover {
-    margin-bottom: -20px;
-    transform: rotate(2deg) translateY(-20px);
-  }
-  .catalog-card:hover + .catalog-card {
-    margin-left: 0;
-    margin-top: 40px;
+    margin-bottom: 20px;
+    transform: translateY(-40px) scale(1.02);
+    z-index: 10;
   }
 }
 
