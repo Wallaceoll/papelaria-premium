@@ -133,6 +133,8 @@
   z-index: 999;
   transform: translateY(-100%);
   opacity: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transition: transform var(--dur-slow) var(--ease-smooth),
               opacity var(--dur-slow) var(--ease-smooth);
 }

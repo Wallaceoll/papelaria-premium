@@ -341,7 +341,7 @@ export default function Servicos() {
             <p className="body-large">
               Se a melhor resposta não estiver em uma categoria só, montamos um mix sob medida com direção visual, curadoria de materiais e apresentação coerente.
             </p>
-            <Link to="/contato" className="btn btn-gold btn-lg">Falar com a equipe</Link>
+            <Link to="/contato" className="btn btn-gold">Falar com a equipe</Link>
           </div>
         </div>
       </section>

@@ -169,8 +169,10 @@
 .showpiece__link {
   margin-top: var(--space-2);
   color: var(--ink);
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .hero-showcase__aside {
@@ -207,38 +209,110 @@
 }
 
 .catalog-intro__cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: var(--space-20) 0;
+  perspective: 1000px;
 }
 
 .catalog-card {
   position: relative;
-  min-height: 32rem;
-  overflow: hidden;
+  min-height: 440px;
+  width: 320px;
+  margin-right: -160px;
+  overflow: visible;
   text-decoration: none;
-  border-radius: var(--radius-lg);
-  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth);
+  border-radius: 40px;
+  background: var(--surface);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 1px solid transparent;
 }
 
 .catalog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  margin-right: 20px;
+  transform: rotate(-4deg) translateY(-40px);
+  z-index: 10;
+  box-shadow: -20px 40px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow Effect */
+.catalog-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  filter: blur(60px);
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.catalog-card:hover::after {
+  opacity: 0.4;
+}
+
+/* Border Gradient Effect */
+.catalog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+.catalog-card:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .catalog-card {
+    background: linear-gradient(to bottom, #1A1714, #0a0a07);
+    box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.6);
+  }
 }
 
 .catalog-card__image {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
   object-fit: cover;
+  border-radius: 32px;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+.catalog-card:hover .catalog-card__image {
+  opacity: 1;
 }
 
 .catalog-card__overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(26, 23, 20, 0.08), rgba(26, 23, 20, 0.72));
+  inset: 12px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, rgba(26, 23, 20, 0) 40%, rgba(26, 23, 20, 0.95) 100%);
+  z-index: 1;
 }
+
+/* As regras de imagem e overlay já estão definidas acima dentro do novo layout de leque */
+
 
 .catalog-card__body {
   position: relative;
@@ -248,12 +322,20 @@
   flex-direction: column;
   justify-content: end;
   gap: var(--space-4);
-  padding: var(--space-8);
+  padding: var(--space-10) var(--space-8) var(--space-8);
 }
 
-.catalog-card__body h3,
-.catalog-card__body p {
+.catalog-card__body h3 {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.1;
   color: var(--warm-white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.catalog-card__body p {
+  color: rgba(253, 251, 248, 0.8);
+  font-size: 0.95rem;
 }
 
 .catalog-card__cta {
@@ -409,7 +491,6 @@
 @media (max-width: 1200px) {
   .hero__layout,
   .catalog-intro__grid,
-  .catalog-intro__cards,
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
@@ -424,6 +505,23 @@
 
   .process-grid::before {
     display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .catalog-intro__cards {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 300px;
+  }
+  .catalog-card {
+    margin-right: 0;
+    margin-bottom: -320px;
+    width: 280px;
+  }
+  .catalog-card:hover {
+    margin-bottom: -20px;
+    transform: rotate(2deg) translateY(-20px);
   }
 }
 

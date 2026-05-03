@@ -135,6 +135,7 @@
 
     --cta:      #FDFBF8;
     --cta-hover: #E8E3DC;
+    --on-ink:   #1A1714; /* Cor para texto sobre fundo --ink (que é branco no dark) */
   }
 }
 
@@ -515,7 +516,7 @@ ul, ol { list-style: none; }
   .cursor-dot, .cursor-ring { display: none; }
 
   .floating-ctas {
-    right: var(--space-5);
+    right: 12px;
     bottom: var(--space-5);
     left: auto;
     align-items: flex-end;
@@ -538,20 +539,14 @@ ul, ol { list-style: none; }
   .floating-cta--whatsapp .floating-cta__icon { width: 100%; height: 100%; border: none; background: transparent; }
   .floating-cta--whatsapp .floating-cta__icon svg { width: 1.8rem; height: 1.8rem; }
 
-  .floating-cta--secondary {
-    padding: 0.6rem 1rem;
-    border-radius: var(--radius-full);
-  }
-  .floating-cta--secondary .floating-cta__icon { display: none; }
-  .floating-cta--secondary .floating-cta__text small { display: none; }
-  .floating-cta--secondary .floating-cta__text strong { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+  /* Estilos removidos conforme solicitação */
 
   .btn { padding: var(--space-3) var(--space-6); }
   .btn-lg { padding: var(--space-4) var(--space-8); }
 }
 
 @media (max-width: 560px) {
-  .floating-ctas { bottom: var(--space-6); right: var(--space-4); }
+  .floating-ctas { bottom: var(--space-6); right: 12px; }
 }
 @media (max-width: 480px) {
   .container, .container-wide { padding: 0 var(--space-4); }

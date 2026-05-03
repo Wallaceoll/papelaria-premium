@@ -222,7 +222,7 @@
 .filter-btn.active {
   background: var(--ink);
   border-color: var(--ink);
-  color: var(--warm-white);
+  color: var(--on-ink, var(--bg));
 }
 
 /* ─── GRID ─────────────────────────────────────── */

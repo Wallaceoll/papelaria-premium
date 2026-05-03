@@ -30,13 +30,7 @@ export default function FloatingCtas() {
           </span>
         </a>
 
-        <Link className="floating-cta floating-cta--secondary" to={secondaryAction.to}>
-          <span className="floating-cta__icon" aria-hidden="true">↗</span>
-          <span className="floating-cta__text">
-            <strong>{secondaryAction.label}</strong>
-            <small>Abrir agora</small>
-          </span>
-        </Link>
+        {/* Botão de orçamento removido conforme solicitação */}
       </div>
     </div>
   );
