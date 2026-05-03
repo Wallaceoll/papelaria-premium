@@ -41,7 +41,7 @@ export default function Header() {
 
     navigate(path);
   };
-
+  return (
     <>
       <header className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
         <div className="header__inner container-wide">
