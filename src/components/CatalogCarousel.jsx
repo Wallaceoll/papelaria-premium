@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import './CatalogCarousel.css';
 
 function ArrowButton({ direction, disabled, onClick }) {
-  const label = direction === 'left' ? 'Ver categorias anteriores' : 'Ver proximas categorias';
+  const label = direction === 'left' ? 'Ver categorias anteriores' : 'Ver próximas categorias';
 
   return (
     <button
@@ -94,7 +94,7 @@ export default function CatalogCarousel({ items, onSelect }) {
         <div
           className="catalog-carousel__viewport"
           role="region"
-          aria-label="Carrossel de categorias do catalogo"
+          aria-label="Carrossel de categorias do catálogo"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -113,7 +113,7 @@ export default function CatalogCarousel({ items, onSelect }) {
         <ArrowButton direction="right" disabled={!canGoNext} onClick={() => goToIndex(currentIndex + 1)} />
       </div>
 
-      <div className="catalog-carousel__dots" aria-label="Posicao do carrossel">
+      <div className="catalog-carousel__dots" aria-label="Posição do carrossel">
         {Array.from({ length: dotCount }, (_, index) => (
           <button
             key={`dot-${index}`}

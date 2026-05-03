@@ -13,10 +13,10 @@ const categories = [
 ];
 
 const categoryStories = {
-  celebracao: 'Convites, menus, kits e papelaria de evento pensados para abrir a experiencia antes mesmo da data chegar.',
-  corporativo: 'Materiais institucionais, onboarding e impressos que elevam a percepcao da marca em cada contato.',
+  celebracao: 'Convites, menus, kits e papelaria de evento pensados para abrir a experiência antes mesmo da data chegar.',
+  corporativo: 'Materiais institucionais, onboarding e impressos que elevam a percepção da marca em cada contato.',
   papelaria: 'Planners, blocos, desk sets e itens de rotina com apelo comercial forte e uso real no dia a dia.',
-  packaging: 'Caixas, etiquetas, cintas e detalhes de unboxing que transformam entrega em experiencia de marca.',
+  packaging: 'Caixas, etiquetas, cintas e detalhes de unboxing que transformam a entrega em experiência de marca.',
 };
 
 const products = [
@@ -24,7 +24,7 @@ const products = [
     id: 1,
     cat: 'celebracao',
     badge: 'Celebração',
-    title: 'Suite de casamento editorial',
+    title: 'Suíte de casamento editorial',
     desc: 'Convite principal, RSVP, envelope e papelaria de mesa pensados como uma coleção delicada, elegante e memorável desde o primeiro toque.',
     price: 'A partir de R$ 18/conj.',
     details: ['Envelope em linho', 'Foil dourado', 'Menu de mesa', 'Tag nominal'],
@@ -65,7 +65,7 @@ const products = [
     cat: 'papelaria',
     badge: 'Papelaria',
     title: 'Planner semanal premium',
-    desc: 'Produto pronto para rotina, organização e presente. Capa especial, layout funcional e visual que chama atenção sem esforço.',
+    desc: 'Produto pronto para rotina, organização e presente. Capa especial, layout funcional e visual que chama a atenção sem esforço.',
     price: 'A partir de R$ 68/unid.',
     details: ['Capa especial', 'Miolo semanal', 'Controle de metas', 'Bolso interno'],
     image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
@@ -132,6 +132,7 @@ export default function Servicos() {
     : 'todos';
   const [active, setActive] = useState(initialCategory);
   const [expanded, setExpanded] = useState(null);
+
   useEffect(() => {
     const current = searchParams.get('categoria');
     if (current && categories.some((item) => item.id === current)) {
@@ -197,11 +198,11 @@ export default function Servicos() {
           <div className="servicos-hero__copy">
             <span className="eyebrow reveal">Catálogo Folia</span>
             <h1 className="display-1 reveal reveal-delay-1">
-              Produtos e serviços apresentados com mais clareza, mais apelo e mais intenção de compra.
+              Produtos e serviços apresentados com mais clareza, apelo e intenção de compra.
             </h1>
             <p className="body-large reveal reveal-delay-2">
               Aqui o cliente encontra personalizados, papelaria para escola e escritório, materiais corporativos e packaging com exemplos visuais reais.
-              A ideia é tirar o catálogo do campo abstrato e trazer vontade de clicar, pedir e comprar.
+              A ideia é tirar o catálogo do campo abstrato e trazer a vontade de clicar, pedir e comprar.
             </p>
           </div>
 
@@ -209,7 +210,7 @@ export default function Servicos() {
             <div className="servicos-hero__board-header">
               <span className="eyebrow">Categorias em destaque</span>
               <h2>Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
-              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, mais contexto e mais apelo comercial.</p>
+              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, contexto e apelo comercial.</p>
             </div>
 
             <CatalogCarousel items={carouselItems} onSelect={selectCategory} />
@@ -223,23 +224,23 @@ export default function Servicos() {
             <div className="servicos-packages__content">
               <div className="servicos-packages__header">
                 <span className="eyebrow">Pacotes personalizados</span>
-                <p>Uma proposta consultiva para quando o projeto pede combinacao entre categorias, nao apenas um item isolado.</p>
+                <p>Uma proposta consultiva para quando o projeto pede a combinação entre categorias, não apenas um item isolado.</p>
               </div>
               <h2 className="display-2">Se a melhor solução estiver na combinação entre categorias, montamos um pacote sob medida.</h2>
               <p className="body-large">
-                Alguns pedidos funcionam melhor quando celebracao, papelaria, packaging e materiais de marca entram juntos na mesma proposta.
-                Nesses casos, a Folia organiza uma composicao personalizada de acordo com objetivo, verba e tipo de entrega.
+                Alguns pedidos funcionam melhor quando celebração, papelaria, packaging e materiais de marca entram juntos na mesma proposta.
+                Nesses casos, a Folia organiza uma composição personalizada de acordo com o objetivo, a verba e o tipo de entrega.
               </p>
               <div className="servicos-packages__tags" aria-label="Formatos de pacote personalizado">
                 <span>Kits completos</span>
                 <span>Eventos</span>
                 <span>Presentes institucionais</span>
-                <span>Lancamentos</span>
+                <span>Lançamentos</span>
               </div>
             </div>
             <div className="servicos-packages__actions">
               <span className="eyebrow">Orçamento consultivo</span>
-              <p>Ideal para kits completos, lancamentos, eventos, presentes institucionais e projetos que pedem uma leitura mais consultiva.</p>
+              <p>Ideal para kits completos, lançamentos, eventos, presentes institucionais e projetos que pedem uma leitura mais consultiva.</p>
               <Link to="/contato" className="btn btn-primary btn-lg">Pedir orçamento sob medida</Link>
             </div>
           </div>
@@ -320,7 +321,7 @@ export default function Servicos() {
               },
               {
                 title: 'Contato mais qualificado',
-                desc: 'Quando o visitante já entendeu material, faixa de produto e atmosfera da marca, a conversa comercial fica mais madura e objetiva.',
+                desc: 'Quando o visitante já entendeu o material, a faixa de produto e a atmosfera da marca, a conversa comercial fica mais madura e objetiva.',
               },
             ].map((item, index) => (
               <article className={`diferencial-item card reveal reveal-delay-${index + 1}`} key={item.title}>

@@ -79,7 +79,7 @@ export default function Contato() {
                     { icon: '✉', label: 'E-mail', value: 'ola@foliapapelaria.com.br', href: 'mailto:ola@foliapapelaria.com.br' },
                     { icon: '◎', label: 'WhatsApp', value: '(11) 99999-0000', href: 'https://wa.me/5511999990000' },
                     { icon: '◈', label: 'Localização', value: 'São Paulo, SP · Brasil', href: null },
-                    { icon: '◇', label: 'Horário', value: 'Segunda a Sexta, 9h–18h', href: null },
+                    { icon: '◇', label: 'Horário', value: 'Segunda a sexta, 9h–18h', href: null },
                   ].map(item => (
                     <div className="info-item" key={item.label}>
                       <span className="info-icon">{item.icon}</span>
@@ -103,7 +103,7 @@ export default function Contato() {
                 <div className="info-timeline">
                   {[
                     { day: 'Dia 1', text: 'Recebemos seu orçamento e respondemos' },
-                    { day: 'Dia 2–3', text: 'Enviamos proposta detalhada e contrato' },
+                    { day: 'Dias 2–3', text: 'Enviamos proposta detalhada e contrato' },
                     { day: 'Dia 5+', text: 'Início do processo criativo com briefing' },
                   ].map(t => (
                     <div className="timeline-item" key={t.day}>
@@ -240,7 +240,7 @@ export default function Contato() {
                         onChange={handle('description')}
                         required
                       />
-                      <p className="form-hint">Quanto mais detalhe, melhor conseguimos atender.</p>
+                      <p className="form-hint">Quanto mais detalhes, melhor conseguimos atender.</p>
                     </div>
 
                     <div className="form-group">

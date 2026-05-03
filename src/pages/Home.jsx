@@ -46,7 +46,7 @@ const HERO_PRODUCTS = [
 const CATALOG_ITEMS = [
   {
     title: 'Convites com direção de arte',
-    desc: 'Suites completas com envelope, RSVP, menu e acabamentos que valorizam o momento desde o primeiro contato.',
+    desc: 'Suítes completas com envelope, RSVP, menu e acabamentos que valorizam o momento desde o primeiro contato.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80',
     to: '/servicos?categoria=celebracao#catalogo',
     cta: 'Ver celebrações',
@@ -154,7 +154,7 @@ export default function Home() {
         <div className="hero__orb hero__orb--two" aria-hidden />
         <div className="container-wide hero__layout">
           <div className="hero__content">
-            <div className="hero__eyebrow eyebrow reveal reveal-delay-1">Folia Studio de papelaria</div>
+            <div className="hero__eyebrow eyebrow reveal reveal-delay-1">Folia Studio de Papelaria</div>
             <h1 className="hero__title display-1 reveal reveal-delay-2">
               Papelaria com presença de <em className="hero__em" ref={wordRef}>{FLOAT_WORDS[0]}</em>,
               <br />mais leve, tátil e memorável.
@@ -204,7 +204,7 @@ export default function Home() {
             <span className="eyebrow">Visão do catálogo</span>
             <h2 className="display-2">Mais produto visível, mais clareza comercial e mais confiança para comprar.</h2>
             <p className="body-large">
-              A navegação precisa mostrar o que vocês vendem de verdade. Por isso a vitrine abaixo dá contexto para evento, escola, escritório, marca e embalagem.
+              A navegação precisa mostrar o que vocês vendem de verdade. Por isso, a vitrine abaixo dá contexto para evento, escola, escritório, marca e embalagem.
             </p>
           </div>
 

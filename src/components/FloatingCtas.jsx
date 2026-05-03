@@ -10,7 +10,7 @@ export default function FloatingCtas() {
     : { to: '/contato', label: 'Pedir orçamento' };
 
   return (
-    <div className="floating-ctas" aria-label="Acoes rapidas">
+    <div className="floating-ctas" aria-label="Ações rápidas">
       <div className="floating-ctas__actions">
         <a
           className="floating-cta floating-cta--whatsapp"

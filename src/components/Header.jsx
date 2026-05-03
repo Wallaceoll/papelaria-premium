@@ -79,7 +79,7 @@ export default function Header() {
 
         <div className="header__actions">
           <Link to="/contato" className="btn btn-primary btn-header">
-            Solicitar Orçamento
+            Solicitar orçamento
           </Link>
           <button
             className={`header__burger ${menuOpen ? 'open' : ''}`}
@@ -91,7 +91,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div className={`header__mobile ${menuOpen ? 'open' : ''}`}>
         <nav className="header__mobile-nav">
           {nav.map((item, i) => (
@@ -112,7 +111,7 @@ export default function Header() {
             </Link>
           ))}
           <Link to="/contato" className="btn btn-gold btn-lg header__mobile-cta">
-            Solicitar Orçamento
+            Solicitar orçamento
           </Link>
         </nav>
       </div>

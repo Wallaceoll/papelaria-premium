@@ -54,7 +54,17 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© {year} Folia Papelaria. Todos os direitos reservados.</p>
+          <p>
+            © {year} Folia Papelaria. Todos os direitos reservados a{' '}
+            <a 
+              href="https://kodantech-cjcz.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="footer__dev-link"
+            >
+              KodanTech
+            </a>.
+          </p>
           <div className="footer__legal">
             <Link to="/" className="footer__link">Privacidade</Link>
             <Link to="/" className="footer__link">Termos</Link>
