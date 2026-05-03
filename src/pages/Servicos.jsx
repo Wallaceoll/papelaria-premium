@@ -194,7 +194,7 @@ export default function Servicos() {
   return (
     <div className="servicos">
       <section className="servicos-hero mesh-bg noise">
-        <div className="container-wide servicos-hero__layout">
+        <div className="container-wide">
           <div className="servicos-hero__copy">
             <span className="eyebrow reveal">Catálogo Folia</span>
             <h1 className="display-1 reveal reveal-delay-1">
@@ -206,14 +206,29 @@ export default function Servicos() {
             </p>
           </div>
 
-          <div className="servicos-hero__board reveal-right card">
-            <div className="servicos-hero__board-header">
+          <div className="servicos-hero__featured">
+            <div className="servicos-hero__featured-header reveal">
               <span className="eyebrow">Categorias em destaque</span>
-              <h2>Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
-              <p>Este bloco já separa os recortes principais do catálogo com mais clareza visual, contexto e apelo comercial.</p>
+              <h2 className="display-2">Escolha a frente que melhor traduz o tipo de pedido que você quer montar.</h2>
             </div>
-
-            <CatalogCarousel items={carouselItems} onSelect={selectCategory} />
+            
+            <div className="catalog-fanned-cards">
+              {carouselItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  className={`catalog-fanned-card reveal reveal-delay-${(index % 4) + 1}`}
+                  onClick={() => selectCategory(item.id)}
+                >
+                  <img className="catalog-fanned-card__image" src={item.image} alt={item.name} loading="lazy" />
+                  <div className="catalog-fanned-card__overlay" />
+                  <div className="catalog-fanned-card__body">
+                    <h3 className="heading-1">{item.name}</h3>
+                    <p className="body-base">{item.description}</p>
+                    <span className="catalog-fanned-card__cta btn btn-primary">Ver categoria</span>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -241,7 +256,7 @@ export default function Servicos() {
             <div className="servicos-packages__actions">
               <span className="eyebrow">Orçamento consultivo</span>
               <p>Ideal para kits completos, lançamentos, eventos, presentes institucionais e projetos que pedem uma leitura mais consultiva.</p>
-              <Link to="/contato" className="btn btn-primary btn-lg">Pedir orçamento sob medida</Link>
+              <Link to="/contato" className="btn btn-primary">Pedir orçamento sob medida</Link>
             </div>
           </div>
         </div>
