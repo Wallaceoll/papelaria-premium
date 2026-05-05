@@ -200,6 +200,9 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .header__inner {
+    padding: 0 var(--space-6);
+  }
   .header__nav { display: none; }
   .header__burger { display: flex; }
   
@@ -211,8 +214,12 @@
 }
 
 @media (max-width: 480px) {
+  .header__inner {
+    padding: 0 var(--space-5);
+  }
   .btn-header {
-    padding: 6px 12px;
-    font-size: 0.65rem;
+    padding: 6px 10px;
+    font-size: 0.6rem;
+    letter-spacing: 0;
   }
 }
