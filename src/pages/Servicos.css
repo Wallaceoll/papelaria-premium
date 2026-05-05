@@ -1,6 +1,6 @@
 /* ─── HERO ─────────────────────────────────────── */
 .servicos-hero {
-  padding: var(--space-24) 0 var(--space-16);
+  padding: var(--space-32) 0 var(--space-24);
 }
 
 .servicos-hero__layout {

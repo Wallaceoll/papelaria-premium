@@ -521,6 +521,9 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
   .container, .container-wide { padding: 0 var(--space-5); }
   .section    { padding: var(--space-24) 0; }
   .section-xl { padding: var(--space-32) 0; }

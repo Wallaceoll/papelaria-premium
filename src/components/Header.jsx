@@ -43,7 +43,7 @@ export default function Header() {
   };
   return (
     <>
-      <header className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
+      <header className={`header ${scrolled || pathname !== '/' || menuOpen ? 'header--scrolled' : ''} ${menuOpen ? 'header--open' : ''}`}>
         <div className="header__inner container-wide">
           <Link
             to="/"
