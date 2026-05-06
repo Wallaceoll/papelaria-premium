@@ -263,6 +263,28 @@ export default function Personalizacao() {
   useReveal();
   const [activeStep, setActiveStep] = useState(0);
   const [activeFinish, setActiveFinish] = useState(null);
+  const [touchStart, setTouchStart] = useState(null);
+  const [showFullDesc, setShowFullDesc] = useState(false);
+
+  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchEnd = (e) => {
+    if (!touchStart) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance && activeStep < STEPS.length - 1) {
+      handleStepChange(activeStep + 1);
+    } else if (distance < -minSwipeDistance && activeStep > 0) {
+      handleStepChange(activeStep - 1);
+    }
+    setTouchStart(null);
+  };
+
+  const handleStepChange = (index) => {
+    setActiveStep(index);
+    setShowFullDesc(false);
+  };
 
   const faqs = [
     { q: 'Qual o pedido mínimo?', a: 'O mínimo varia por produto. Convites de casamento: mínimo 50 unidades. Papelaria corporativa: mínimo 100 unidades.' },
@@ -287,26 +309,77 @@ export default function Personalizacao() {
 
       <section className="section pers-process">
         <div className="container-wide">
-          <div className="pers-steps">
-            <div className="pers-steps-nav">
+          {/* Desktop Version */}
+          <div className="pers-steps-desktop">
+            <div className="pers-steps">
+              <div className="pers-steps-nav">
+                {STEPS.map((s, i) => (
+                  <button key={s.num} type="button" className={`step-nav-btn ${activeStep === i ? 'active' : ''}`} onClick={() => setActiveStep(i)}>
+                    <span className="step-nav-num eyebrow">{s.num}</span>
+                    <span className="step-nav-title">{s.title}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="pers-steps-content">
+                <div className="step-panel" key={activeStep}>
+                  <div className="step-icon">{STEPS[activeStep].icon}</div>
+                  <img className="step-image" src={STEPS[activeStep].image} alt={STEPS[activeStep].title} loading="lazy" />
+                  <h3 className="step-title display-3">{STEPS[activeStep].title}</h3>
+                  <p className="step-desc body-large">{STEPS[activeStep].desc}</p>
+                  <div className="step-nav-arrows">
+                    <button className="btn btn-outline" type="button" onClick={() => setActiveStep(i => Math.max(0, i - 1))} disabled={activeStep === 0}>← Anterior</button>
+                    <button className="btn btn-primary" type="button" onClick={() => setActiveStep(i => Math.min(STEPS.length - 1, i + 1))} disabled={activeStep === STEPS.length - 1}>Próximo →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Version (Horizontal Stepper) */}
+          <div className="pers-steps-mobile">
+            <div className="mobile-stepper">
               {STEPS.map((s, i) => (
-                <button key={s.num} type="button" className={`step-nav-btn ${activeStep === i ? 'active' : ''}`} onClick={() => setActiveStep(i)}>
-                  <span className="step-nav-num eyebrow">{s.num}</span>
-                  <span className="step-nav-title">{s.title}</span>
+                <button 
+                  key={s.num} 
+                  className={`mobile-step-item ${activeStep === i ? 'active' : ''}`}
+                  onClick={() => handleStepChange(i)}
+                >
+                  <span className="mobile-step-num">{s.num}</span>
+                  <div className="mobile-step-line" />
                 </button>
               ))}
             </div>
-            <div className="pers-steps-content">
-              <div className="step-panel" key={activeStep}>
-                <div className="step-icon">{STEPS[activeStep].icon}</div>
-                <img className="step-image" src={STEPS[activeStep].image} alt={STEPS[activeStep].title} loading="lazy" />
-                <h3 className="step-title display-3">{STEPS[activeStep].title}</h3>
-                <p className="step-desc body-large">{STEPS[activeStep].desc}</p>
-                <div className="step-nav-arrows">
-                  <button className="btn btn-outline" type="button" onClick={() => setActiveStep(i => Math.max(0, i - 1))} disabled={activeStep === 0}>← Anterior</button>
-                  <button className="btn btn-primary" type="button" onClick={() => setActiveStep(i => Math.min(STEPS.length - 1, i + 1))} disabled={activeStep === STEPS.length - 1}>Próximo →</button>
-                </div>
+
+            <div 
+              className="mobile-active-content"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              key={activeStep}
+            >
+              <div className="mobile-step-visual">
+                <img src={STEPS[activeStep].image} alt={STEPS[activeStep].title} className="mobile-step-img" />
+                <div className="mobile-step-badge">{STEPS[activeStep].icon}</div>
               </div>
+              <div className="mobile-step-info">
+                <h3 className="mobile-step-title">{STEPS[activeStep].title}</h3>
+                <div className={`mobile-step-desc ${showFullDesc ? 'expanded' : ''}`}>
+                  <p>{STEPS[activeStep].desc}</p>
+                </div>
+                <button className="mobile-step-toggle" onClick={() => setShowFullDesc(!showFullDesc)}>
+                  {showFullDesc ? 'Ler menos' : 'Ver mais'}
+                </button>
+                
+                {showFullDesc && (
+                  <div className="mobile-step-detail">
+                    <span className="gold-bullet">✦</span>
+                    <p>{STEPS[activeStep].detail}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            <div className="mobile-swipe-hint">
+              <span>← deslize para navegar →</span>
             </div>
           </div>
         </div>
