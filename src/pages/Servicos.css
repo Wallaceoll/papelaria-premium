@@ -227,8 +227,50 @@
 
 .filter-bar {
   display: flex;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
+}
+
+.filter-group--desktop {
+  display: flex;
+}
+
+.filter-group--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .filter-group--desktop {
+    display: none;
+  }
+  
+  .filter-group--mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .servicos-filter {
+    padding: var(--space-3) 0;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .filter-btn--more {
+    background: var(--gold-pale);
+    border-color: var(--gold);
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
 }
 
 .filter-btn {

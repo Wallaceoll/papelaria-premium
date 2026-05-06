@@ -132,6 +132,7 @@ export default function Servicos() {
     : 'todos';
   const [active, setActive] = useState(initialCategory);
   const [expanded, setExpanded] = useState(null);
+  const [showMoreFilters, setShowMoreFilters] = useState(false);
 
   useEffect(() => {
     const current = searchParams.get('categoria');
@@ -247,60 +248,110 @@ export default function Servicos() {
         </div>
       </section>
 
-      <section className="servicos-filter">
-        <div className="container-wide">
-          <div className="filter-bar">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                type="button"
-                className={`filter-btn ${active === category.id ? 'active' : ''}`}
-                onClick={() => selectCategory(category.id)}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section servicos-grid-section" id="catalogo" ref={catalogRef}>
-        <div className="container-wide">
-          <div className="servicos-grid">
-            {filtered.map((product, index) => (
-              <article className={`produto-card reveal reveal-delay-${(index % 3) + 1}`} key={product.id}>
-                <div className="produto-badge">{product.badge}</div>
-                <img className="produto-visual" src={product.image} alt={product.title} loading="lazy" />
-                <div className="produto-body">
-                  <div className="produto-meta">
-                    <span className="produto-category">{categories.find((category) => category.id === product.cat)?.label}</span>
-                    <span className="produto-price">{product.price}</span>
-                  </div>
-                  <h3 className="produto-title">{product.title}</h3>
-                  <p className="produto-desc">{product.desc}</p>
+      <div className="servicos-catalog-area">
+        <section className="servicos-filter">
+          <div className="container-wide">
+            <div className="filter-bar">
+              {/* Versão Desktop (Sempre mostra tudo) */}
+              <div className="filter-group filter-group--desktop">
+                {categories.map((category) => (
                   <button
+                    key={category.id}
                     type="button"
-                    className="produto-details-btn btn btn-ghost"
-                    onClick={() => setExpanded(expanded === product.id ? null : product.id)}
+                    className={`filter-btn ${active === category.id ? 'active' : ''}`}
+                    onClick={() => selectCategory(category.id)}
                   >
-                    {expanded === product.id ? 'Ocultar composição' : 'Ver composição'}
+                    {category.label}
                   </button>
-                  {expanded === product.id && (
-                    <ul className="produto-details-list">
-                      {product.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
-                  )}
-                  <div className="produto-footer">
-                    <Link to="/contato" className="btn btn-primary">Solicitar orçamento</Link>
-                  </div>
-                </div>
-              </article>
-            ))}
+                ))}
+              </div>
+
+              {/* Versão Mobile (Híbrido Inteligente) */}
+              <div className={`filter-group filter-group--mobile ${showMoreFilters ? 'is-expanded' : ''}`}>
+                {/* Sempre visíveis no mobile */}
+                {categories.slice(0, 3).map((category) => (
+                  <button
+                    key={category.id}
+                    type="button"
+                    className={`filter-btn ${active === category.id ? 'active' : ''}`}
+                    onClick={() => selectCategory(category.id)}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+                
+                {!showMoreFilters ? (
+                  <button 
+                    type="button" 
+                    className="filter-btn filter-btn--more"
+                    onClick={() => setShowMoreFilters(true)}
+                  >
+                    + Mais
+                  </button>
+                ) : (
+                  <>
+                    {categories.slice(3).map((category) => (
+                      <button
+                        key={category.id}
+                        type="button"
+                        className={`filter-btn ${active === category.id ? 'active' : ''}`}
+                        onClick={() => selectCategory(category.id)}
+                      >
+                        {category.label}
+                      </button>
+                    ))}
+                    <button 
+                      type="button" 
+                      className="filter-btn filter-btn--more"
+                      onClick={() => setShowMoreFilters(false)}
+                    >
+                      − Menos
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="section servicos-grid-section" id="catalogo" ref={catalogRef}>
+          <div className="container-wide">
+            <div className="servicos-grid">
+              {filtered.map((product, index) => (
+                <article className={`produto-card reveal reveal-delay-${(index % 3) + 1}`} key={product.id}>
+                  <div className="produto-badge">{product.badge}</div>
+                  <img className="produto-visual" src={product.image} alt={product.title} loading="lazy" />
+                  <div className="produto-body">
+                    <div className="produto-meta">
+                      <span className="produto-category">{categories.find((category) => category.id === product.cat)?.label}</span>
+                      <span className="produto-price">{product.price}</span>
+                    </div>
+                    <h3 className="produto-title">{product.title}</h3>
+                    <p className="produto-desc">{product.desc}</p>
+                    <button
+                      type="button"
+                      className="produto-details-btn btn btn-ghost"
+                      onClick={() => setExpanded(expanded === product.id ? null : product.id)}
+                    >
+                      {expanded === product.id ? 'Ocultar composição' : 'Ver composição'}
+                    </button>
+                    {expanded === product.id && (
+                      <ul className="produto-details-list">
+                        {product.details.map((detail) => (
+                          <li key={detail}>{detail}</li>
+                        ))}
+                      </ul>
+                    )}
+                    <div className="produto-footer">
+                      <Link to="/contato" className="btn btn-primary">Solicitar orçamento</Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
 
       <section className="section diferenciais">
         <div className="container-wide diferenciais__layout">
